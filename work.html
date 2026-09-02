@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<title>Work — Lozy Creative</title>
+<style>
+.page-hero{padding:10rem calc(var(--frame) + 2.5rem) 3.5rem;background:var(--sand)}
+
+.page-hero-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+
+.page-hero-label::before{content:'';display:block;width:2rem;height:1px;background:var(--terra)}
+
+.page-hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:200;line-height:1.06}
+
+.page-hero-title em{color:var(--wine)}
+
+/* ═══ WORK SHOWCASE — por categoria ═══ */
+
+.work-showcase-section{padding:3rem var(--frame)}
+
+.work-showcase-section:first-of-type{padding-top:4rem}
+
+.work-showcase-section:last-of-type{padding-bottom:5rem}
+
+.work-category-title{font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(1.5rem,2.6vw,2rem);margin:0 0 1rem calc(var(--frame) + 1.5rem);color:var(--ink)}
+
+/* Discover more */
+
+#discover{padding:7rem calc(var(--frame) + 2.5rem);background:var(--sand)}
+
+.discover-title{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:200;margin-bottom:3rem}
+
+.discover-title em{color:var(--wine)}
+
+.discover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+
+.d-card{cursor:pointer}
+
+.d-thumb{aspect-ratio:16/9;background:var(--sand-dark);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.85rem}
+
+.d-thumb img{width:38px;opacity:.15}
+
+.d-thumb span{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,27,29,.25)}
+
+.d-name{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:200}
+
+.d-cat{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+
+@media(max-width:768px){
+  .page-hero{padding:7rem 1.5rem 2.5rem}
+  #discover{padding:4rem 1.5rem}
+  .work-showcase-section{padding:2rem 1.5rem}
+  .work-category-title{margin-left:0}
+}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-cream"><img src="assets/logocream.png" alt="Lozy Creative"></span>
+    <span class="nav-logo-ink"><img src="assets/logoblack.png" alt="Lozy Creative"></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+<!-- <li><a href="sobre.html">Sobre</a></li> -->
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <span class="nav-cta-wrap">
+    <a href="contato.html" class="btn-roll"><span class="roll-inner"><span class="roll-track"><span>Iniciar projeto</span><span>Iniciar projeto</span></span></span></a>
+  </span>
+  <button type="button" class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-label">Portfólio</div>
+  <h1 class="page-hero-title">Todos os<br><em>trabalhos.</em></h1>
+</section>
+
+<section class="work-showcase-section">
+  <h2 class="work-category-title">Marcas & Publicidades</h2>
+  <div class="showcase-wrap">
+    <a class="showcase-panel active" href="projeto.html?id=alan-baic-v1" data-vid="alan-baic-v1" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="alan-baic-v1" src="assets/videos/projects/alan-baic-v1-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/alan-baic-v1.mp4" data-vid="alan-baic-v1" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">A BAIC chegou no Brasil</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=bella-nike-selecao" data-vid="bella-nike-selecao" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="bella-nike-selecao" src="assets/videos/projects/bella-nike-selecao-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/bella-nike-selecao.mp4" data-vid="bella-nike-selecao" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Bella Guttmann & Nike</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Joga sinistro, Brasil!</span><span class="t-italic"><em>Joga sinistro, Brasil!</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=joao-abarth" data-vid="joao-abarth" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="joao-abarth" src="assets/videos/projects/joao-abarth-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/joao-abarth.mp4" data-vid="joao-abarth" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">João Druzian & Fiat Abarth</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Ritmo</span><span class="t-italic"><em>Ritmo</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=isabelli-profuse" data-vid="isabelli-profuse" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="isabelli-profuse" src="assets/videos/projects/isabelli-profuse-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse.mp4" data-vid="isabelli-profuse" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Isabelli & Profuse</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Skincare na correria</span><span class="t-italic"><em>Skincare na correria</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=pedro-fila" data-vid="pedro-fila" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="pedro-fila" src="assets/videos/projects/pedro-fila-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/pedro-fila.mp4" data-vid="pedro-fila" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Pedro Nogueira & Fila</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">O último homem de pé</span><span class="t-italic"><em>O último homem de pé</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=dot-rappi" data-vid="dot-rappi" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="dot-rappi" src="assets/videos/projects/dot-rappi-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/dot-rappi.mp4" data-vid="dot-rappi" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dot Energy no Rappi Turbo</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=isabelli-profuse-2" data-vid="isabelli-profuse-2" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="isabelli-profuse-2" src="assets/videos/projects/isabelli-profuse-2-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse-2.mp4" data-vid="isabelli-profuse-2" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Isabelli & Profuse</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=dot-g4-ads" data-vid="dot-g4-ads" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="dot-g4-ads" src="assets/videos/projects/dot-g4-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/dot-g4-ads.mp4" data-vid="dot-g4-ads" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dot Energy no G4</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="work-showcase-section">
+  <h2 class="work-category-title">Eventos & Ativações</h2>
+  <div class="showcase-wrap">
+    <a class="showcase-panel active" href="projeto.html?id=joao-wellness-fitbr" data-vid="joao-wellness-fitbr" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="joao-wellness-fitbr" src="assets/videos/projects/joao-wellness-fitbr-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/joao-wellness-fitbr.mp4" data-vid="joao-wellness-fitbr" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">João Druzian & Wellness na Fitness Brasil</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=you-chsa" data-vid="you-chsa" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="you-chsa" src="assets/videos/projects/you-chsa-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/you-chsa.mp4" data-vid="you-chsa" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">You Club & Clube Hípico</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=ritua-1a-edicao" data-vid="ritua-1a-edicao" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="ritua-1a-edicao" src="assets/videos/projects/ritua-1a-edicao-poster.jpg?v=1788140103" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/ritua-1a-edicao.mp4" data-vid="ritua-1a-edicao" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Bem vindos ao Ritua Offline</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=ritua-outlive" data-vid="ritua-outlive" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="ritua-outlive" src="assets/videos/projects/ritua-outlive-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/ritua-outlive.mp4" data-vid="ritua-outlive" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Outlive no Ritua Offline</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=ritua-2a-edicao" data-vid="ritua-2a-edicao" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="ritua-2a-edicao" src="assets/videos/projects/ritua-2a-edicao-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/ritua-2a-edicao.mp4" data-vid="ritua-2a-edicao" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Ritua Offline, mais uma vez!</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=ritua-blessy" data-vid="ritua-blessy" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="ritua-blessy" src="assets/videos/projects/ritua-blessy-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/ritua-blessy.mp4" data-vid="ritua-blessy" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Blessy no Ritua Offline</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="work-showcase-section">
+  <h2 class="work-category-title">Médicos</h2>
+  <div class="showcase-wrap">
+    <a class="showcase-panel active" href="projeto.html?id=larissa-blefaroplastia" data-vid="larissa-blefaroplastia" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="larissa-blefaroplastia" src="assets/videos/projects/larissa-blefaroplastia-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/larissa-blefaroplastia.mp4" data-vid="larissa-blefaroplastia" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Larissa Prioli</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Rejuvenescimento Saudável e Seguro</span><span class="t-italic"><em>Rejuvenescimento Saudável e Seguro</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=larissa-mini-lipo" data-vid="larissa-mini-lipo" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="larissa-mini-lipo" src="assets/videos/projects/larissa-mini-lipo-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/larissa-mini-lipo.mp4" data-vid="larissa-mini-lipo" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Larissa Prioli</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Tratamento para Celulite</span><span class="t-italic"><em>Tratamento para Celulite</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=rafael-ultramar-brunella" data-vid="rafael-ultramar-brunella" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="rafael-ultramar-brunella" src="assets/videos/projects/rafael-ultramar-brunella-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/rafael-ultramar-brunella.mp4" data-vid="rafael-ultramar-brunella" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Brunella na Clínica Ultramar</span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=augusto-cirurgia" data-vid="augusto-cirurgia" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="augusto-cirurgia" src="assets/videos/projects/augusto-cirurgia-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/augusto-cirurgia.mp4" data-vid="augusto-cirurgia" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dr. Augusto</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Recomeços</span><span class="t-italic"><em>Recomeços</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=joao-malta-nutri" data-vid="joao-malta-nutri" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="joao-malta-nutri" src="assets/videos/projects/joao-malta-nutri-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/joao-malta-nutri.mp4" data-vid="joao-malta-nutri" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dr. João Malta</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Nutrição sem complicação</span><span class="t-italic"><em>Nutrição sem complicação</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=augusto-extrator-ads" data-vid="augusto-extrator-ads" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="augusto-extrator-ads" src="assets/videos/projects/augusto-extrator-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/augusto-extrator-ads.mp4" data-vid="augusto-extrator-ads" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dr. Augusto</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Cirurgia Capilar de excelência</span><span class="t-italic"><em>Cirurgia Capilar de excelência</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+    <a class="showcase-panel" href="projeto.html?id=augusto-mounjaro-ads" data-vid="augusto-mounjaro-ads" onmouseenter="expandPanel(this)">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="augusto-mounjaro-ads" src="assets/videos/projects/augusto-mounjaro-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/augusto-mounjaro-ads.mp4" data-vid="augusto-mounjaro-ads" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dr. Augusto</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">A verdade sobre queda de cabelo</span><span class="t-italic"><em>A verdade sobre queda de cabelo</em></span></span>
+        </div>
+        <span class="panel-watch">Ver projeto completo</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Bloco "Descubra mais" desativado por enquanto — voltaremos nele no futuro.
+<section id="discover">
+  <h2 class="discover-title reveal">Descubra <em>mais</em></h2>
+  <div class="discover-grid">
+    <div class="d-card reveal"><div class="d-thumb"><img src="assets/symbolblack.png" alt=""><span>Slot · projeto autoral</span></div><p class="d-name">[Nome do projeto]</p><p class="d-cat">[Categoria]</p></div>
+    <div class="d-card reveal"><div class="d-thumb"><img src="assets/symbolblack.png" alt=""><span>Slot · projeto autoral</span></div><p class="d-name">[Nome do projeto]</p><p class="d-cat">[Categoria]</p></div>
+    <div class="d-card reveal"><div class="d-thumb"><img src="assets/symbolblack.png" alt=""><span>Slot · projeto autoral</span></div><p class="d-name">[Nome do projeto]</p><p class="d-cat">[Categoria]</p></div>
+  </div>
+</section>
+-->
+
+<section id="contato-cta">
+  <img class="cta-symbol" src="assets/symbolwine.png" alt="">
+  <h2 class="cta-title reveal">Tem um <em>projeto</em><br>em mente?</h2>
+  <div class="cta-actions">
+    <a href="contato.html" class="btn-roll wine"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo"><img src="assets/logocream.png" alt="Lozy Creative"></a>
+      <div class="footer-contact">
+        <a href="mailto:hello@lozycreative.com">hello@lozycreative.com</a>
+        <a href="https://wa.me/5511925992003">+55 11 92599-2003</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Navegação</p>
+      <a href="work.html">Work</a>
+<!-- <a href="sobre.html">Sobre</a> -->
+      <a href="contato.html">Contato</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Social</p>
+      <a href="https://instagram.com/lozy.creative" target="_blank">Instagram</a>
+      <a href="https://briefing.lozycreative.com" target="_blank">Briefing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lozy Creative. Todos os direitos reservados.</span>
+    <span>São Paulo, Brasil</span>
+  </div>
+</footer>
+<script>
+window.addEventListener('load',()=>{
+  const pre=document.getElementById('preloader');
+  if(pre)setTimeout(()=>pre.classList.add('done'),900);
+});
+const nav=document.getElementById('main-nav');
+const navBurger=document.getElementById('navBurger');
+if(navBurger&&nav){
+  navBurger.addEventListener('click',()=>{
+    const open=nav.classList.toggle('nav-open');
+    navBurger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('nav-lock',open);
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('nav-open');
+    navBurger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('nav-lock');
+  }));
+}
+const heroEl=document.getElementById('hero');
+if(heroEl){
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>heroEl.offsetHeight*0.75)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+}else{
+  nav.classList.add('scrolled');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const panelVideoAR={};
+function applyPanelSize(panel){
+  const ar=panelVideoAR[panel.dataset.vid];
+  if(!ar)return;
+  const wrap=panel.closest('.showcase-wrap');
+  if(!wrap)return;
+  if(window.matchMedia('(max-width:768px)').matches){
+    const w=panel.clientWidth||wrap.clientWidth;
+    panel.style.minHeight=Math.round(w/ar)+'px';
+  }else{
+    const h=wrap.clientHeight;
+    const rawW=h*ar;
+    const otherCount=wrap.querySelectorAll('.showcase-panel').length-1;
+    const maxW=wrap.clientWidth-(otherCount*80);
+    const w=Math.max(320,Math.min(maxW,rawW));
+    panel.style.flex='0 0 '+Math.round(w)+'px';
+  }
+}
+function expandPanel(el){
+  const wrap=el.closest('.showcase-wrap');
+  const panels=wrap?wrap.querySelectorAll('.showcase-panel'):document.querySelectorAll('.showcase-panel');
+  panels.forEach(p=>{
+    if(p!==el){
+      clearTimeout(p._playTimer);
+      p.classList.remove('active','playing');
+      p.style.flex='';
+      p.style.minHeight='';
+      const pv=p.querySelector('.panel-video');
+      if(pv)pv.pause();
+    }
+  });
+  el.classList.add('active');
+  applyPanelSize(el);
+  clearTimeout(el._playTimer);
+  el._playTimer=setTimeout(()=>{
+    const vid=el.querySelector('.panel-video');
+    if(vid){
+      if(!vid.src)vid.src=vid.dataset.src;
+      vid.play().catch(()=>{});
+    }
+    el.classList.add('playing');
+  },180);
+}
+document.querySelectorAll('.panel-poster').forEach(img=>{
+  const id=img.dataset.vid;
+  const panel=img.closest('.showcase-panel');
+  const setAR=()=>{
+    if(img.naturalWidth&&img.naturalHeight){
+      panelVideoAR[id]=img.naturalWidth/img.naturalHeight;
+      if(panel.classList.contains('active'))applyPanelSize(panel);
+    }
+  };
+  if(img.complete&&img.naturalWidth)setAR();
+  else img.addEventListener('load',setAR);
+});
+let showcaseResizeTimer;
+window.addEventListener('resize',()=>{
+  clearTimeout(showcaseResizeTimer);
+  showcaseResizeTimer=setTimeout(()=>{
+    document.querySelectorAll('.showcase-wrap').forEach(wrap=>{
+      const activePanel=wrap.querySelector('.showcase-panel.active');
+      if(activePanel)applyPanelSize(activePanel);
+    });
+  },150);
+});
+</script>
+</body>
+</html>

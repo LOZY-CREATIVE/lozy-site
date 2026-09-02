@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lozy Creative — Produção audiovisual para marcas, atletas, criadores e médicos | São Paulo</title>
+<meta name="description" content="Agência criativa em São Paulo. Filmes de marca e conteúdo recorrente para quem vende controle sobre o corpo e sobre o tempo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="preloader">
+  <img src="assets/logoblack.png" alt="Lozy Creative">
+  <p class="preloader-text"><span>Controle.</span> <span>Precisão.</span> <span>Imagem.</span></p>
+</div>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-cream"><img src="assets/logocream.png" alt="Lozy Creative"></span>
+    <span class="nav-logo-ink"><img src="assets/logoblack.png" alt="Lozy Creative"></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+<!-- <li><a href="sobre.html">Sobre</a></li> -->
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <span class="nav-cta-wrap">
+    <a href="contato.html" class="btn-roll"><span class="roll-inner"><span class="roll-track"><span>Iniciar projeto</span><span>Iniciar projeto</span></span></span></a>
+  </span>
+  <button type="button" class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="hero-wrap">
+  <section id="hero">
+    <div class="hero-video-panel">
+      <video id="heroVideo" class="hero-video-embed" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" autoplay muted loop playsinline title="video_hero"></video>
+      <div class="hero-video-volume muted" id="heroVolumeControl">
+        <button type="button" class="vol-btn" id="heroVolBtn" aria-label="Ativar som">
+          <svg class="vol-icon vol-icon-on" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 9 8 9 13 4 13 20 8 15 3 15 3 9"></polygon><path d="M16 8a5 5 0 0 1 0 8"></path></svg>
+          <svg class="vol-icon vol-icon-off" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 9 8 9 13 4 13 20 8 15 3 15 3 9"></polygon><line x1="16" y1="8" x2="21" y2="13"></line><line x1="21" y1="8" x2="16" y2="13"></line></svg>
+        </button>
+        <input type="range" class="vol-slider" id="heroVolSlider" min="0" max="100" value="15" aria-label="Volume do vídeo">
+      </div>
+    </div>
+    <div class="hero-text-panel">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-eyebrow">Precisão que vira imagem.</h1>
+        <p class="hero-sub">Filmamos o que atletas, médicos e marcas têm em comum: controle exato — sobre o corpo, sobre o tempo.</p>
+        <a href="contato.html" class="btn-roll light"><span class="roll-inner"><span class="roll-track"><span>Entrar em contato</span><span>Entrar em contato</span></span></span></a>
+      </div>
+    </div>
+  </section>
+  <span class="hero-scroll">Scroll</span>
+</div>
+
+<section id="verbete">
+  <div class="verbete-inner reveal">
+    <p class="verbete-class">[substantivo]</p>
+    <p class="verbete-word">lo·zy | \ ˈlō-zí \</p>
+    <p class="verbete-def">O método que une leitura de negócio e sensibilidade criativa pra transformar em imagem a precisão de quem não deixa nada ao acaso — no corpo, no tempo, na entrega.</p>
+  </div>
+</section>
+
+<section id="trusted">
+  <h2 class="trusted-title reveal">Marcas que confiam na gente</h2>
+  <div class="trusted-grid reveal">
+    <!-- Esporte -->
+    <div class="logo-slot"><img src="assets/logos/nike.png" alt="Nike"></div>
+    <div class="logo-slot"><img src="assets/logos/adidas.png" alt="Adidas"></div>
+    <div class="logo-slot"><img src="assets/logos/fila.png" alt="Fila"></div>
+    <div class="logo-slot"><img src="assets/logos/on.png" alt="On"></div>
+    <div class="logo-slot"><img src="assets/logos/decathlon.png" alt="Decathlon"></div>
+    <div class="logo-slot"><img src="assets/logos/ollie.png" alt="Ollie"></div>
+    <div class="logo-slot"><img src="assets/logos/inter.png" alt="Internacional"></div>
+    <!-- Automotivo -->
+    <div class="logo-slot"><img src="assets/logos/byd.png" alt="BYD"></div>
+    <div class="logo-slot"><img src="assets/logos/chevrolet.png" alt="Chevrolet"></div>
+    <div class="logo-slot"><img src="assets/logos/vw.png" alt="Volkswagen"></div>
+    <div class="logo-slot"><img src="assets/logos/toyota.png" alt="Toyota"></div>
+    <!-- Moda -->
+    <div class="logo-slot"><img src="assets/logos/armani.png" alt="Armani"></div>
+    <!-- Beleza -->
+    <div class="logo-slot"><img src="assets/logos/creamy.png" alt="Creamy Skincare"></div>
+    <!-- Alimentação -->
+    <div class="logo-slot"><img src="assets/logos/cenoura-bronze.png" alt="Cenoura & Bronze"></div>
+    <!-- Hospitalidade -->
+    <div class="logo-slot"><img src="assets/logos/hope-resort.png" alt="Hope Resort"></div>
+    <!-- Serviços/fintech -->
+    <div class="logo-slot"><img src="assets/logos/dobro.png" alt="Dobro"></div>
+    <div class="logo-slot"><img src="assets/logos/dot.png" alt="Dot"></div>
+  </div>
+</section>
+
+<section id="showcase">
+  <div class="showcase-wrap">
+    <div class="showcase-panel active" data-vid="alan-baic-v1" onmouseenter="expandPanel(this)" onclick="openModal('alan-baic-v1')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="alan-baic-v1" src="assets/videos/projects/alan-baic-v1-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/alan-baic-v1.mp4" data-vid="alan-baic-v1" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">A BAIC chegou no Brasil</span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="ritua-1a-edicao" onmouseenter="expandPanel(this)" onclick="openModal('ritua-1a-edicao')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="ritua-1a-edicao" src="assets/videos/projects/ritua-1a-edicao-poster.jpg?v=1788140103" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/ritua-1a-edicao.mp4" data-vid="ritua-1a-edicao" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Bem vindos ao Ritua Offline</span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="larissa-blefaroplastia" onmouseenter="expandPanel(this)" onclick="openModal('larissa-blefaroplastia')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="larissa-blefaroplastia" src="assets/videos/projects/larissa-blefaroplastia-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/larissa-blefaroplastia.mp4" data-vid="larissa-blefaroplastia" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Larissa Prioli</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Rejuvenescimento Saudável e Seguro</span><span class="t-italic"><em>Rejuvenescimento Saudável e Seguro</em></span></span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="bella-nike-selecao" onmouseenter="expandPanel(this)" onclick="openModal('bella-nike-selecao')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="bella-nike-selecao" src="assets/videos/projects/bella-nike-selecao-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/bella-nike-selecao.mp4" data-vid="bella-nike-selecao" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Bella Guttmann & Nike</span>
+          <span class="panel-sep">|</span>
+          <span class="panel-title-swap"><span class="t-roman">Joga sinistro, Brasil!</span><span class="t-italic"><em>Joga sinistro, Brasil!</em></span></span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="isabelli-profuse-2" onmouseenter="expandPanel(this)" onclick="openModal('isabelli-profuse-2')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="isabelli-profuse-2" src="assets/videos/projects/isabelli-profuse-2-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse-2.mp4" data-vid="isabelli-profuse-2" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">Dra. Isabelli & Profuse</span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="joao-wellness-fitbr" onmouseenter="expandPanel(this)" onclick="openModal('joao-wellness-fitbr')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="joao-wellness-fitbr" src="assets/videos/projects/joao-wellness-fitbr-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/joao-wellness-fitbr.mp4" data-vid="joao-wellness-fitbr" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">João Druzian & Wellness na Fitness Brasil</span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+    <div class="showcase-panel" data-vid="you-chsa" onmouseenter="expandPanel(this)" onclick="openModal('you-chsa')">
+      <div class="panel-bg">
+        <img class="panel-poster" data-vid="you-chsa" src="assets/videos/projects/you-chsa-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
+        <video class="panel-video" data-src="assets/videos/projects/you-chsa.mp4" data-vid="you-chsa" muted loop playsinline tabindex="-1"></video>
+        <div class="panel-scrim"></div>
+      </div>
+      <div class="panel-label">
+        <div class="panel-title-wrap">
+          <span class="panel-client">You Club & Clube Hípico</span>
+        </div>
+        <span class="panel-watch">Assistir vídeo completo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="atos">
+  <div class="atos-card">
+    <div class="atos-grid">
+      <div class="ato reveal">
+        <span class="ato-num">01</span>
+        <h3 class="ato-title">Leitura de negócio</h3>
+        <p class="ato-desc">Antes de decidir um enquadramento, entendemos o negócio: o que essa marca vende, pra quem, e o que precisa provar agora. Toda escolha estética nasce dessa leitura, nunca o contrário.</p>
+        <ul class="ato-list"><li>Briefing e imersão</li><li>Roteiro e pauta</li></ul>
+      </div>
+      <div class="ato reveal">
+        <span class="ato-num">02</span>
+        <h3 class="ato-title">Sensibilidade criativa</h3>
+        <p class="ato-desc">Entendido o negócio, a câmera vira instrumento de decisão. Cada frame carrega intenção — luz, movimento e ritmo a serviço de uma ideia, nunca soltos por conta própria.</p>
+        <ul class="ato-list"><li>Direção e captação</li><li>Luz, som e movimento</li><li>Edição e finalização</li></ul>
+      </div>
+      <div class="ato reveal">
+        <span class="ato-num">03</span>
+        <h3 class="ato-title">Parceria real</h3>
+        <p class="ato-desc">Não tratamos cliente como conta recorrente, nem como briefing pra produção em série. Cada projeto é decidido junto, do conceito à entrega — e é isso que sustenta a precisão e o resultado que o cliente busca.</p>
+        <ul class="ato-list"><li>Formatos para cada plataforma</li><li>Estratégia de distribuição</li><li>Suporte pós-entrega</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Depoimentos desativados por enquanto — voltaremos nessa seção mais pra frente.
+<section id="reviews">
+  <div class="section-label">O que dizem</div>
+  <div class="review-slide active" id="review-1">
+    <div>
+      <p class="review-text">"[Depoimento 1 — placeholder]"</p>
+      <p class="review-author">Nome · Empresa</p>
+    </div>
+    <div class="review-video"><img src="assets/symbolblack.png" alt=""><span>Vídeo do projeto</span></div>
+  </div>
+  <div class="review-slide" id="review-2">
+    <div>
+      <p class="review-text">"[Depoimento 2 — placeholder]"</p>
+      <p class="review-author">Nome · Empresa</p>
+    </div>
+    <div class="review-video"><img src="assets/symbolblack.png" alt=""><span>Vídeo do projeto</span></div>
+  </div>
+  <div class="review-slide" id="review-3">
+    <div>
+      <p class="review-text">"[Depoimento 3 — placeholder]"</p>
+      <p class="review-author">Nome · Empresa</p>
+    </div>
+    <div class="review-video"><img src="assets/symbolblack.png" alt=""><span>Vídeo do projeto</span></div>
+  </div>
+  <div class="review-nav">
+    <button class="review-dot active" onclick="showReview(1)"></button>
+    <button class="review-dot" onclick="showReview(2)"></button>
+    <button class="review-dot" onclick="showReview(3)"></button>
+  </div>
+</section>
+-->
+
+<section id="contato-cta">
+  <img class="cta-symbol" src="assets/symbolwine.png" alt="">
+  <h2 class="cta-title reveal">Tem um <em>projeto</em><br>em mente?</h2>
+  <div class="cta-actions">
+    <a href="contato.html" class="btn-roll wine"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo"><img src="assets/logocream.png" alt="Lozy Creative"></a>
+      <div class="footer-contact">
+        <a href="mailto:hello@lozycreative.com">hello@lozycreative.com</a>
+        <a href="https://wa.me/5511925992003">+55 11 92599-2003</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Navegação</p>
+      <a href="work.html">Work</a>
+<!-- <a href="sobre.html">Sobre</a> -->
+      <a href="contato.html">Contato</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Social</p>
+      <a href="https://instagram.com/lozy.creative" target="_blank">Instagram</a>
+      <a href="https://briefing.lozycreative.com" target="_blank">Briefing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lozy Creative. Todos os direitos reservados.</span>
+    <span>São Paulo, Brasil</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">Fechar ✕</button>
+    <div class="modal-iframe-wrap"><video id="modal-video" src="" controls playsinline></video></div>
+  </div>
+</div>
+
+<script>
+const heroVideo=document.getElementById('heroVideo');
+if(heroVideo){
+  const DEFAULT_VOLUME=0.15;
+  const volWrap=document.getElementById('heroVolumeControl');
+  const volBtn=document.getElementById('heroVolBtn');
+  const volSlider=document.getElementById('heroVolSlider');
+  volSlider.value=Math.round(DEFAULT_VOLUME*100);
+  heroVideo.volume=DEFAULT_VOLUME;
+  const setMutedUI=muted=>volWrap.classList.toggle('muted',muted);
+  setMutedUI(heroVideo.muted);
+  volBtn.addEventListener('click',()=>{
+    if(heroVideo.muted){
+      let v=parseInt(volSlider.value,10)/100;
+      if(v<=0){v=DEFAULT_VOLUME;volSlider.value=Math.round(DEFAULT_VOLUME*100);}
+      heroVideo.volume=v;
+      heroVideo.muted=false;
+      setMutedUI(false);
+    }else{
+      heroVideo.muted=true;
+      setMutedUI(true);
+    }
+  });
+  volSlider.addEventListener('input',()=>{
+    const v=parseInt(volSlider.value,10)/100;
+    heroVideo.volume=v;
+    if(v<=0){heroVideo.muted=true;setMutedUI(true);}
+    else if(heroVideo.muted){heroVideo.muted=false;setMutedUI(false);}
+  });
+}
+window.addEventListener('load',()=>{
+  const pre=document.getElementById('preloader');
+  if(pre)setTimeout(()=>{
+    pre.classList.add('done');
+    if(heroVideo){
+      heroVideo.currentTime=0;
+      heroVideo.play().catch(()=>{});
+    }
+  },1500);
+});
+const nav=document.getElementById('main-nav');
+const navBurger=document.getElementById('navBurger');
+if(navBurger&&nav){
+  navBurger.addEventListener('click',()=>{
+    const open=nav.classList.toggle('nav-open');
+    navBurger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('nav-lock',open);
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('nav-open');
+    navBurger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('nav-lock');
+  }));
+}
+const heroEl=document.getElementById('hero');
+if(heroEl){
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>heroEl.offsetHeight*0.75)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+}else{
+  nav.classList.add('scrolled');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const panelVideoAR={};
+function applyPanelSize(panel){
+  const ar=panelVideoAR[panel.dataset.vid];
+  if(!ar)return;
+  const wrap=document.querySelector('.showcase-wrap');
+  if(window.matchMedia('(max-width:768px)').matches){
+    const w=panel.clientWidth||wrap.clientWidth;
+    panel.style.minHeight=Math.round(w/ar)+'px';
+  }else{
+    const h=wrap.clientHeight;
+    const rawW=h*ar;
+    const otherCount=document.querySelectorAll('.showcase-panel').length-1;
+    const maxW=wrap.clientWidth-(otherCount*80);
+    const w=Math.max(320,Math.min(maxW,rawW));
+    panel.style.flex='0 0 '+Math.round(w)+'px';
+  }
+}
+function expandPanel(el){
+  document.querySelectorAll('.showcase-panel').forEach(p=>{
+    if(p!==el){
+      clearTimeout(p._playTimer);
+      p.classList.remove('active','playing');
+      p.style.flex='';
+      p.style.minHeight='';
+      const pv=p.querySelector('.panel-video');
+      if(pv)pv.pause();
+    }
+  });
+  el.classList.add('active');
+  applyPanelSize(el);
+  clearTimeout(el._playTimer);
+  el._playTimer=setTimeout(()=>{
+    const vid=el.querySelector('.panel-video');
+    if(vid){
+      if(!vid.src)vid.src=vid.dataset.src;
+      vid.play().catch(()=>{});
+    }
+    el.classList.add('playing');
+  },180);
+}
+document.querySelectorAll('.panel-poster').forEach(img=>{
+  const id=img.dataset.vid;
+  const panel=img.closest('.showcase-panel');
+  const setAR=()=>{
+    if(img.naturalWidth&&img.naturalHeight){
+      panelVideoAR[id]=img.naturalWidth/img.naturalHeight;
+      if(panel.classList.contains('active'))applyPanelSize(panel);
+    }
+  };
+  if(img.complete&&img.naturalWidth)setAR();
+  else img.addEventListener('load',setAR);
+});
+let showcaseResizeTimer;
+window.addEventListener('resize',()=>{
+  clearTimeout(showcaseResizeTimer);
+  showcaseResizeTimer=setTimeout(()=>{
+    const activePanel=document.querySelector('.showcase-panel.active');
+    if(activePanel)applyPanelSize(activePanel);
+  },150);
+});
+function showReview(n){
+  document.querySelectorAll('.review-slide').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.review-dot').forEach(d=>d.classList.remove('active'));
+  document.getElementById('review-'+n).classList.add('active');
+  document.querySelectorAll('.review-dot')[n-1].classList.add('active');
+}
+function openModal(id){
+  const v=document.getElementById('modal-video');
+  v.src='assets/videos/projects/'+id+'.mp4';
+  v.play().catch(()=>{});
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==e.currentTarget)return;
+  const v=document.getElementById('modal-video');
+  v.pause();
+  v.src='';
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<title>Projeto — Lozy Creative</title>
+<style>
+#proj-hero{padding:8.5rem calc(var(--frame) + 2.5rem) 0;background:var(--sand)}
+
+.proj-back{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem;transition:opacity .2s}
+
+.proj-back::before{content:'←'}
+
+.proj-back:hover{opacity:.65}
+
+.proj-client{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:.75rem}
+
+.proj-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:200;line-height:1.06;margin-bottom:2.5rem}
+
+.proj-title em{color:var(--wine)}
+
+#proj-video-wrap{padding:0 var(--frame) 4rem;background:var(--sand)}
+
+.proj-video{position:relative;padding-bottom:56.25%;height:0;border-radius:var(--radius);overflow:hidden;background:var(--ink)}
+
+.proj-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:none;background:#000}
+
+#proj-body{padding:5rem calc(var(--frame) + 2.5rem) 7rem;background:var(--sand)}
+
+.proj-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:6rem;align-items:start}
+
+.proj-desc p{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:1.4rem}
+
+.proj-meta{border-top:1px solid var(--border-strong)}
+
+.proj-meta-row{display:flex;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--border)}
+
+.proj-meta-k{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+
+.proj-meta-v{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink)}
+
+#proj-next{padding:4rem calc(var(--frame) + 2.5rem);background:var(--sand-dark);text-align:center}
+
+.proj-next-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem}
+
+@media(max-width:768px){
+  #proj-hero{padding:6.5rem 1.5rem 0}
+  #proj-body{padding:3rem 1.5rem 5rem}
+  .proj-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-cream"><img src="assets/logocream.png" alt="Lozy Creative"></span>
+    <span class="nav-logo-ink"><img src="assets/logoblack.png" alt="Lozy Creative"></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+<!-- <li><a href="sobre.html">Sobre</a></li> -->
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <span class="nav-cta-wrap">
+    <a href="contato.html" class="btn-roll"><span class="roll-inner"><span class="roll-track"><span>Iniciar projeto</span><span>Iniciar projeto</span></span></span></a>
+  </span>
+  <button type="button" class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="proj-hero">
+  <a href="work.html" class="proj-back">Todos os trabalhos</a>
+  <h1 class="proj-title" id="pTitle"></h1>
+</section>
+
+<div id="proj-video-wrap">
+  <div class="proj-video">
+    <video id="pVideo" src="" poster="" controls playsinline></video>
+  </div>
+</div>
+
+<!-- Descrição, metadados e "continue explorando" desativados por enquanto — fora do escopo da V1.
+<section id="proj-body">
+  <div class="proj-grid">
+    <div class="proj-desc reveal" id="pDesc"></div>
+    <div class="proj-meta reveal" id="pMeta"></div>
+  </div>
+</section>
+
+<section id="proj-next">
+  <p class="proj-next-label">Continue explorando</p>
+  <a href="work.html" class="btn-roll dark"><span class="roll-inner"><span class="roll-track"><span>Ver todos os trabalhos</span><span>Ver todos os trabalhos</span></span></span></a>
+</section>
+-->
+
+<section id="contato-cta">
+  <img class="cta-symbol" src="assets/symbolwine.png" alt="">
+  <h2 class="cta-title reveal">Tem um <em>projeto</em><br>em mente?</h2>
+  <div class="cta-actions">
+    <a href="contato.html" class="btn-roll wine"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo"><img src="assets/logocream.png" alt="Lozy Creative"></a>
+      <div class="footer-contact">
+        <a href="mailto:hello@lozycreative.com">hello@lozycreative.com</a>
+        <a href="https://wa.me/5511925992003">+55 11 92599-2003</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Navegação</p>
+      <a href="work.html">Work</a>
+<!-- <a href="sobre.html">Sobre</a> -->
+      <a href="contato.html">Contato</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Social</p>
+      <a href="https://instagram.com/lozy.creative" target="_blank">Instagram</a>
+      <a href="https://briefing.lozycreative.com" target="_blank">Briefing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lozy Creative. Todos os direitos reservados.</span>
+    <span>São Paulo, Brasil</span>
+  </div>
+</footer>
+<script>
+window.addEventListener('load',()=>{
+  const pre=document.getElementById('preloader');
+  if(pre)setTimeout(()=>pre.classList.add('done'),900);
+});
+const nav=document.getElementById('main-nav');
+const navBurger=document.getElementById('navBurger');
+if(navBurger&&nav){
+  navBurger.addEventListener('click',()=>{
+    const open=nav.classList.toggle('nav-open');
+    navBurger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('nav-lock',open);
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('nav-open');
+    navBurger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('nav-lock');
+  }));
+}
+const heroEl=document.getElementById('hero');
+if(heroEl){
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>heroEl.offsetHeight*0.75)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+}else{
+  nav.classList.add('scrolled');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function expandPanel(el){
+  document.querySelectorAll('.showcase-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+}
+function showReview(n){
+  document.querySelectorAll('.review-slide').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.review-dot').forEach(d=>d.classList.remove('active'));
+  document.getElementById('review-'+n).classList.add('active');
+  document.querySelectorAll('.review-dot')[n-1].classList.add('active');
+}
+function openModal(id){
+  const v=document.getElementById('modal-video');
+  v.src='assets/videos/projects/'+id+'.mp4';
+  v.play().catch(()=>{});
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==e.currentTarget)return;
+  const v=document.getElementById('modal-video');
+  v.pause();
+  v.src='';
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+const PROJECTS = {
+ "alan-baic-v1": {
+  "client": "A BAIC chegou no Brasil",
+  "tag": "Automotivo",
+  "title": "A BAIC chegou no Brasil",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","A BAIC chegou no Brasil"],["Categoria","Automotivo"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "ritua-1a-edicao": {
+  "client": "Bem vindos ao Ritua Offline",
+  "tag": "Evento",
+  "title": "Bem vindos ao Ritua Offline",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Bem vindos ao Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "larissa-blefaroplastia": {
+  "client": "Dra. Larissa Prioli",
+  "tag": "Saúde",
+  "title": "Rejuvenescimento Saudável e Seguro",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Larissa Prioli"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "bella-nike-selecao": {
+  "client": "Bella Guttmann & Nike",
+  "tag": "Esporte",
+  "title": "Joga sinistro, Brasil!",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Bella Guttmann & Nike"],["Categoria","Esporte"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "isabelli-profuse-2": {
+  "client": "Dra. Isabelli & Profuse",
+  "tag": "Saúde",
+  "title": "Dra. Isabelli & Profuse",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Isabelli & Profuse"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "joao-wellness-fitbr": {
+  "client": "João Druzian & Wellness na Fitness Brasil",
+  "tag": "Evento",
+  "title": "João Druzian & Wellness na Fitness Brasil",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","João Druzian & Wellness na Fitness Brasil"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "you-chsa": {
+  "client": "You Club & Clube Hípico",
+  "tag": "Evento",
+  "title": "You Club & Clube Hípico",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","You Club & Clube Hípico"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "joao-abarth": {
+  "client": "João Druzian & Fiat Abarth",
+  "tag": "Automotivo",
+  "title": "Ritmo",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","João Druzian & Fiat Abarth"],["Categoria","Automotivo"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "isabelli-profuse": {
+  "client": "Dra. Isabelli & Profuse",
+  "tag": "Saúde",
+  "title": "Skincare na correria",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Isabelli & Profuse"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "pedro-fila": {
+  "client": "Pedro Nogueira & Fila",
+  "tag": "Esporte",
+  "title": "O último homem de pé",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Pedro Nogueira & Fila"],["Categoria","Esporte"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "dot-rappi": {
+  "client": "Dot Energy no Rappi Turbo",
+  "tag": "Fintech",
+  "title": "Dot Energy no Rappi Turbo",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dot Energy no Rappi Turbo"],["Categoria","Fintech"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "dot-g4-ads": {
+  "client": "Dot Energy no G4",
+  "tag": "Fintech",
+  "title": "Dot Energy no G4",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dot Energy no G4"],["Categoria","Fintech"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "ritua-outlive": {
+  "client": "Outlive no Ritua Offline",
+  "tag": "Evento",
+  "title": "Outlive no Ritua Offline",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Outlive no Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "ritua-2a-edicao": {
+  "client": "Ritua Offline, mais uma vez!",
+  "tag": "Evento",
+  "title": "Ritua Offline, mais uma vez!",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Ritua Offline, mais uma vez!"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "ritua-blessy": {
+  "client": "Blessy no Ritua Offline",
+  "tag": "Evento",
+  "title": "Blessy no Ritua Offline",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Blessy no Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "larissa-mini-lipo": {
+  "client": "Dra. Larissa Prioli",
+  "tag": "Saúde",
+  "title": "Tratamento para Celulite",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Larissa Prioli"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "rafael-ultramar-brunella": {
+  "client": "Dra. Brunella na Clínica Ultramar",
+  "tag": "Saúde",
+  "title": "Dra. Brunella na Clínica Ultramar",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Brunella na Clínica Ultramar"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "augusto-cirurgia": {
+  "client": "Dr. Augusto",
+  "tag": "Saúde",
+  "title": "Recomeços",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dr. Augusto"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "joao-malta-nutri": {
+  "client": "Dr. João Malta",
+  "tag": "Saúde",
+  "title": "Nutrição sem complicação",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dr. João Malta"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "augusto-extrator-ads": {
+  "client": "Dr. Augusto",
+  "tag": "Saúde",
+  "title": "Cirurgia Capilar de excelência",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dr. Augusto"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "augusto-mounjaro-ads": {
+  "client": "Dr. Augusto",
+  "tag": "Saúde",
+  "title": "A verdade sobre queda de cabelo",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dr. Augusto"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ }
+};
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+const p = PROJECTS[id];
+if(p){
+  document.getElementById('pTitle').textContent = p.client;
+  const pVideo=document.getElementById('pVideo');
+  pVideo.src = 'assets/videos/projects/'+id+'.mp4';
+  pVideo.poster = 'assets/videos/projects/'+id+'-poster.jpg?v='+Date.now();
+  document.title = p.client + ' — Lozy Creative';
+} else {
+  document.getElementById('pTitle').textContent = 'Projeto não encontrado';
+}
+</script>
+</body>
+</html>

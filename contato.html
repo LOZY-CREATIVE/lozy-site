@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<title>Contato — Lozy Creative</title>
+<style>
+/* ═══ INNER PAGES ═══ */
+
+.page-hero{padding:10rem calc(var(--frame) + 2.5rem) 3.5rem;background:var(--sand)}
+
+.page-hero-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+
+.page-hero-label::before{content:'';display:block;width:2rem;height:1px;background:var(--terra)}
+
+.page-hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:200;line-height:1.06}
+
+.page-hero-title em{color:var(--wine)}
+
+/* WORK GRID */
+
+#work-grid-section{padding:2rem calc(var(--frame) + 2.5rem) 7rem;background:var(--sand)}
+
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:3rem 2rem}
+
+.work-card{cursor:pointer}
+
+.work-thumb{position:relative;aspect-ratio:16/9;border-radius:14px;background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1rem;transition:transform .35s ease}
+
+.work-card:hover .work-thumb{transform:scale(0.985)}
+
+.work-thumb-sym{width:44px;opacity:0.1}
+
+.work-watch{position:absolute;bottom:.85rem;right:.85rem;width:34px;height:34px;border-radius:50%;background:rgba(234,227,214,0.12);color:rgba(234,227,214,0.85);display:flex;align-items:center;justify-content:center;font-size:10px;backdrop-filter:blur(4px)}
+
+.work-meta{display:flex;flex-direction:column;gap:.2rem}
+
+.work-client{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra)}
+
+.work-title-swap{position:relative;display:inline-block;font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:200;line-height:1.2}
+
+.work-title-swap .t-italic{position:absolute;top:0;left:0;opacity:0;transition:opacity .25s;white-space:nowrap;color:var(--wine)}
+
+.work-title-swap .t-roman{transition:opacity .25s}
+
+.work-card:hover .t-roman{opacity:0}
+
+.work-card:hover .t-italic{opacity:1}
+
+.work-tag{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-top:.3rem}
+
+/* SOBRE */
+
+#sobre-founder{padding:6rem calc(var(--frame) + 2.5rem);background:var(--sand)}
+
+.founder-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:6rem;align-items:start}
+
+.founder-photo{aspect-ratio:4/5;border-radius:14px;background:var(--sand-dark);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+
+.founder-photo img{width:64px;opacity:0.15}
+
+.founder-photo span{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,27,29,0.25)}
+
+.founder-name{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:300;margin-bottom:.3rem}
+
+.founder-role{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);margin-bottom:2rem;display:block}
+
+.founder-bio p{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:1.25rem}
+
+#sobre-historia{padding:7rem calc(var(--frame) + 2.5rem);background:var(--wine)}
+
+.historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start}
+
+.historia-title{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:200;line-height:1.1;color:var(--sand)}
+
+.historia-title em{color:var(--terra)}
+
+.historia-text p{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:rgba(234,227,214,0.75);line-height:1.9;margin-bottom:1.5rem}
+
+.historia-text strong{color:var(--sand);font-weight:400}
+
+#sobre-atos{padding:7rem calc(var(--frame) + 2.5rem);background:var(--sand)}
+
+.sobre-atos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-strong)}
+
+.sobre-ato-item{background:var(--sand);padding:2.5rem 2rem}
+
+.sobre-ato-desc{font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--mid);line-height:1.8}
+
+/* CONTATO */
+
+#contato-form-section{padding:2rem calc(var(--frame) + 2.5rem) 7rem;background:var(--sand)}
+
+.contato-grid{max-width:640px}
+
+.form-group{margin-bottom:1.75rem}
+
+.form-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:.5rem}
+
+.form-input,.form-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-strong);padding:.75rem 0;font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:var(--ink);outline:none;transition:border-color .2s}
+
+.form-input:focus,.form-textarea:focus{border-bottom-color:var(--wine)}
+
+.form-textarea{resize:vertical;min-height:120px}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+
+.form-submit{background:var(--wine);color:var(--sand);border:none;cursor:pointer}
+
+@media(max-width:768px){
+  .page-hero{padding:7rem 1.5rem 2.5rem}
+  #work-grid-section,#contato-form-section{padding:1.5rem 1.5rem 5rem}
+  #sobre-founder,#sobre-historia,#sobre-atos{padding:4rem 1.5rem}
+  .work-grid{grid-template-columns:1fr}
+  .founder-grid,.historia-grid,.contato-grid{grid-template-columns:1fr;gap:3rem}
+  .sobre-atos-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-cream"><img src="assets/logocream.png" alt="Lozy Creative"></span>
+    <span class="nav-logo-ink"><img src="assets/logoblack.png" alt="Lozy Creative"></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+<!-- <li><a href="sobre.html">Sobre</a></li> -->
+    <li><a href="contato.html" class="active">Contato</a></li>
+  </ul>
+  <span class="nav-cta-wrap">
+    <a href="contato.html" class="btn-roll"><span class="roll-inner"><span class="roll-track"><span>Iniciar projeto</span><span>Iniciar projeto</span></span></span></a>
+  </span>
+  <button type="button" class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-label">Contato</div>
+  <h1 class="page-hero-title">Vamos começar.</h1>
+</section>
+<section id="contato-form-section">
+  <div class="contato-grid">
+    <div class="reveal">
+      <form action="mailto:hello@lozycreative.com" method="post" enctype="text/plain">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome</label>
+            <input class="form-input" type="text" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sobrenome</label>
+            <input class="form-input" type="text" name="sobrenome">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input class="form-input" type="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mensagem</label>
+          <textarea class="form-textarea" name="mensagem" placeholder="[Placeholder do campo de mensagem]"></textarea>
+        </div>
+        <button type="submit" class="btn-roll form-submit"><span class="roll-inner"><span class="roll-track"><span>Enviar</span><span>Enviar</span></span></span></button>
+      </form>
+    </div>
+  </div>
+</section>
+<section id="contato-cta">
+  <img class="cta-symbol" src="assets/symbolwine.png" alt="">
+  <h2 class="cta-title reveal">Tem um <em>projeto</em><br>em mente?</h2>
+  <div class="cta-actions">
+    <a href="contato.html" class="btn-roll wine"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo"><img src="assets/logocream.png" alt="Lozy Creative"></a>
+      <div class="footer-contact">
+        <a href="mailto:hello@lozycreative.com">hello@lozycreative.com</a>
+        <a href="https://wa.me/5511925992003">+55 11 92599-2003</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Navegação</p>
+      <a href="work.html">Work</a>
+<!-- <a href="sobre.html">Sobre</a> -->
+      <a href="contato.html">Contato</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Social</p>
+      <a href="https://instagram.com/lozy.creative" target="_blank">Instagram</a>
+      <a href="https://briefing.lozycreative.com" target="_blank">Briefing</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lozy Creative. Todos os direitos reservados.</span>
+    <span>São Paulo, Brasil</span>
+  </div>
+</footer>
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">Fechar ✕</button>
+    <div class="modal-iframe-wrap"><video id="modal-video" src="" controls playsinline></video></div>
+  </div>
+</div>
+<script>
+window.addEventListener('load',()=>{
+  const pre=document.getElementById('preloader');
+  if(pre)setTimeout(()=>pre.classList.add('done'),900);
+});
+const nav=document.getElementById('main-nav');
+const navBurger=document.getElementById('navBurger');
+if(navBurger&&nav){
+  navBurger.addEventListener('click',()=>{
+    const open=nav.classList.toggle('nav-open');
+    navBurger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('nav-lock',open);
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('nav-open');
+    navBurger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('nav-lock');
+  }));
+}
+const heroEl=document.getElementById('hero');
+if(heroEl){
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>heroEl.offsetHeight*0.75)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+}else{
+  nav.classList.add('scrolled');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function expandPanel(el){
+  document.querySelectorAll('.showcase-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+}
+function showReview(n){
+  document.querySelectorAll('.review-slide').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.review-dot').forEach(d=>d.classList.remove('active'));
+  document.getElementById('review-'+n).classList.add('active');
+  document.querySelectorAll('.review-dot')[n-1].classList.add('active');
+}
+function openModal(id){
+  const v=document.getElementById('modal-video');
+  v.src='assets/videos/projects/'+id+'.mp4';
+  v.play().catch(()=>{});
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==e.currentTarget)return;
+  const v=document.getElementById('modal-video');
+  v.pause();
+  v.src='';
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
