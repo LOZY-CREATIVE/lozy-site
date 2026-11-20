@@ -6,7 +6,7 @@ Site institucional da Lozy Creative. HTML/CSS/JS puro, sem build, para GitHub Pa
 
 - `index.html` — Home
 - `work.html` — Portfólio (grid selado, hover video)
-- `projeto.html` — Case study dinâmico (`projeto.html?id={vimeoId}`)
+- `projeto.html` — Case study dinâmico (`projeto.html?id={slug}`)
 - `sobre.html` — Sobre
 - `contato.html` — Contato
 - `assets/` — Logos e símbolos da marca (JPEG com fundo sólido, requer extração)
@@ -18,13 +18,13 @@ python3 -m http.server 8000
 # abrir http://localhost:8000
 ```
 
-Servir por HTTP é necessário: o `work.html` faz `fetch` na API do Vimeo e
-o `projeto.html` lê query params — ambos falham em `file://`.
+Servir por HTTP é necessário: o `projeto.html` lê query params (`?id=`) e
+carrega os vídeos de `assets/videos/` — isso falha em `file://`.
 
 ## Deploy
 
 Push para a branch principal do repo com GitHub Pages ativo.
-Domínio: `lozycreative.com`
+Domínio: `lozycreative.com.br` (DNS no Registro.br apontando para o GitHub Pages; o `CNAME` do repo é gerenciado pelo Pages).
 
 ## Onde editar o quê
 

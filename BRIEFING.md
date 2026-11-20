@@ -10,11 +10,13 @@
 - **Lozy Studio** — conteúdo cinematográfico/de marca para marcas, influenciadores e criadores
 - **Lozy Pro** — conteúdo recorrente de alto volume para profissionais (médicos, advogados), formato "Um Mês em Um Dia": uma sessão de captação gera um mês de conteúdo
 
-O site atual (`lozycreative.com`) foi feito no Canva e é limitado — não permite criar novas abas. Este projeto o substitui.
+O site antigo (`lozycreative.com`, feito no Canva e limitado — não permitia criar novas abas) foi substituído por este projeto. O domínio antigo venceu e não foi renovado; o endereço oficial agora é `lozycreative.com.br`.
 
-**Stack:** HTML/CSS/JS puro, sem framework, sem build. Deploy em GitHub Pages apontando para `lozycreative.com`.
+**Stack:** HTML/CSS/JS puro, sem framework, sem build. Deploy em GitHub Pages apontando para `lozycreative.com.br` (DNS no Registro.br).
 
-**Já existe e permanece:** `briefing.lozycreative.com` (página de briefing de cliente, HTML puro no GitHub Pages).
+**Fora do ar por ora:** `briefing.lozycreative.com` (página de briefing de cliente, HTML puro no GitHub Pages, repo separado). Estava no domínio antigo e ainda não foi migrado para o `.com.br`.
+
+**E-mail de contato:** os rodapés ainda usam `hello@lozycreative.com`. Ele só recebe mensagens enquanto o domínio antigo tiver DNS/MX ativos; se parar de funcionar, trocar nas 5 páginas.
 
 ---
 
@@ -32,7 +34,7 @@ O site é uma adaptação estrutural de **https://auteurstudios.au** (produtora 
 | **Text roll** | Todos os botões | Texto duplicado dentro de uma janela de altura `1.2em` com `overflow:hidden`; no hover o trilho desliza `translateY(-1.2em)` |
 | **Título romano → itálico** | Showcase (home), cards (work) | Duas versões sobrepostas, opacidade cruzada no hover |
 | **Acordeão horizontal** | Home, seção showcase | 5 painéis em flex; `flex:1` colapsado, `flex:7` ativo; `transition: flex .65s` disparado no `mouseenter` |
-| **Grid selado + hover video** | Work | Gap zero, cantos retos; poster estático → iframe Vimeo em autoplay silencioso após 180ms de hover |
+| **Grid selado + hover video** | Work | Gap zero, cantos retos; poster estático → vídeo `.mp4` local em autoplay silencioso no hover |
 | **Reveal on scroll** | Todas | IntersectionObserver adiciona `.visible` em `.reveal` |
 | **Nav adaptativo** | Todas | Transparente sobre hero escuro → sólido ao scrollar; logo troca cream ↔ black |
 
@@ -112,7 +114,7 @@ assets/        8 PNGs de marca (fundo sólido, precisa extração)
 2. **Hero** — card escuro com `border-radius: 20px` dentro de moldura areia de 14px. **Slot reservado para o vídeo reel principal** (Leo vai editar um vídeo de melhores takes). Texto: `[FRASE PRINCIPAL]` em caps + `[Subfrase em itálico]`. Botão único "Entrar em contato"
 3. **Verbete "lo·zy"** — formato de dicionário. Definição em placeholder
 4. **Trusted** — fundo vinho, 8 slots de logo (atualmente placeholders com nome em texto)
-5. **Showcase** — acordeão horizontal, 5 projetos, clique abre modal do Vimeo
+5. **Showcase** — acordeão horizontal, projetos em destaque, clique abre modal com o vídeo (`.mp4` local)
 6. **Ponte** — faixa de 420px, fundo vinho, frase placeholder + botão "Sobre nós"
 7. **Três atos** — coluna esquerda com 01/02/03 empilhados, coluna direita com slot de vídeo sticky
 8. **Depoimentos** — fundo terracota, carrossel de 3 slides com dots
@@ -122,10 +124,10 @@ assets/        8 PNGs de marca (fundo sólido, precisa extração)
 ### work.html
 
 Grid selado de 3 colunas, gap zero, 9 projetos. Cada card:
-- Poster estático buscado via **oEmbed público do Vimeo** (`https://vimeo.com/api/oembed.json?url=...`) — roda no client-side ao carregar
-- iframe do Vimeo em `background=1&autoplay=1&loop=1&muted=1` que aparece após 180ms de hover
+- Poster estático local (`assets/videos/projects/{slug}-poster.jpg`)
+- `<video>` local (`assets/videos/projects/{slug}.mp4`, `muted loop playsinline`) carregado sob demanda via `data-src` e reproduzido no hover
 - Nome do cliente sempre sobreposto, centralizado
-- Clique → `projeto.html?id={vimeoId}`
+- Clique → `projeto.html?id={slug}`
 
 Seção "Descubra mais" no fim com 3 slots para trabalhos autorais.
 
@@ -137,27 +139,13 @@ Template único. Lê `?id=` da URL e popula a partir do objeto `PROJECTS` no top
 
 ---
 
-## 6. Vídeos no Vimeo
+## 6. Vídeos
 
-| ID | Cliente | Categoria |
-|---|---|---|
-| 1213545823 | Pedro Nogueira × Fila | Esporte |
-| 1213545654 | João Druzian × Fiat Abarth | Automotivo |
-| 1213545242 | Bella Guttmann × Nike | Publicidade |
-| 1213544692 | Ritua Offline (2ª ed.) | Evento |
-| 1213544072 | You Club × CHSA | Evento |
-| 1213544425 | Ritua Offline (1ª ed.) | Evento |
-| 1213546527 | Dr. Augusto — Cirurgia Capilar | Lozy Pro |
-| 1213546134 | Dr. Augusto — Ads Transplante | Lozy Pro |
-| 1213546350 | Dr. João Malta — Ads Nutrição | Lozy Pro |
+Os vídeos **não usam mais o Vimeo**: são arquivos `.mp4` (H.264 ~5 Mbps) + poster `.jpg` versionados no próprio repo, em `assets/videos/` (hero em `assets/videos/hero.mp4`, projetos em `assets/videos/projects/{slug}.mp4`).
 
-**Os 5 em destaque na Home:** 1213545823, 1213545654, 1213545242, 1213544692, 1213546527
-
-**Ainda em upload** (retornavam 404): 1214226985, 1214226975, 1214226914, 1214226733
-
-### ⚠️ Problema conhecido: vídeos não reproduzem
-
-Leo reportou que os embeds não tocam. O código está correto (IDs certos, URL do player bem formada). Causa provável: **restrição de domínio de embed no Vimeo**. Verificar em cada vídeo: *Settings → Privacy → Where can this be embedded?* — deve estar em "Anywhere" ou com `lozycreative.com` e `*.github.io` liberados. **Confirmar isso antes de debugar código.**
+- Cada projeto é identificado por um **slug** (ex.: `alan-baic-v1`), usado no nome dos arquivos e em `projeto.html?id={slug}`.
+- A lista de slugs, nomes de exibição, ordem e timestamps das capas está em `assets/videos/README.md`.
+- Para adicionar/trocar um vídeo: comprimir, gerar o poster, colocar em `assets/videos/projects/` e registrar o slug no bloco `.w-card`/`.showcase-panel` correspondente e no objeto `PROJECTS` do `projeto.html`.
 
 ---
 
@@ -198,7 +186,6 @@ Para reduzir peso, quantizar RGB em 32 cores preservando o canal alpha (as cores
 ### Bloqueadores para publicar
 - [ ] **Vídeo reel do hero** — Leo vai editar; slot já reservado em `index.html`
 - [ ] **Número de WhatsApp real** — placeholder `5511999999999` em index, sobre, contato e rodapé
-- [ ] **Verificar privacidade dos vídeos no Vimeo** (ver seção 6)
 
 ### Conteúdo em placeholder
 - [ ] Frase principal + subfrase do hero
