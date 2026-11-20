@@ -373,6 +373,7 @@ function applyPanelSize(panel){
   if(!ar)return;
   const wrap=document.querySelector('.showcase-wrap');
   if(window.matchMedia('(max-width:768px)').matches){
+    if(wrap.classList.contains('scroll-mode'))return;
     const w=panel.clientWidth||wrap.clientWidth;
     panel.style.minHeight=Math.round(w/ar)+'px';
   }else{
@@ -385,6 +386,7 @@ function applyPanelSize(panel){
   }
 }
 function expandPanel(el){
+  if(el.classList.contains('active')||el.closest('.showcase-wrap.scroll-mode'))return;
   document.querySelectorAll('.showcase-panel').forEach(p=>{
     if(p!==el){
       clearTimeout(p._playTimer);
@@ -450,5 +452,6 @@ function closeModal(e){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
+<script src="showcase-scroll.js"></script>
 </body>
 </html>

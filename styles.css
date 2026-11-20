@@ -107,6 +107,7 @@ nav.scrolled .nav-burger span{background:var(--ink)}
 .logo-slot img{max-height:100%;max-width:110px;object-fit:contain}
 
 /* ═══ SHOWCASE ═══ */
+.showcase-track{display:contents}
 #showcase{padding:6rem var(--frame);background:var(--sand)}
 .showcase-wrap{display:flex;gap:10px;height:78vh;min-height:520px}
 .showcase-panel{position:relative;display:block;flex:1 1 0%;border-radius:14px;overflow:hidden;background:var(--ink);cursor:pointer;text-decoration:none;color:inherit;transition:flex .65s cubic-bezier(.5,0,.2,1),min-height .65s cubic-bezier(.5,0,.2,1)}
@@ -199,6 +200,13 @@ footer{background:var(--wine);border-top:1px solid rgba(234,227,214,0.1);padding
   .showcase-wrap{flex-direction:column;height:auto}
   .showcase-panel{min-height:70px}
   .showcase-panel.active{min-height:400px}
+  /* Scroll-driven: o track dá a "distância de scroll", o wrap fica pinado (sticky)
+     e o scroll alterna qual painel está expandido (ver showcase-scroll.js) */
+  .showcase-track{--sc-top:76px;--sc-h:calc(100vh - 84px);--sc-step:55vh;display:block;height:calc(var(--sc-h) + (var(--sc-n,1) - 1) * var(--sc-step))}
+  @supports (height:100svh){.showcase-track{--sc-h:calc(100svh - 84px);--sc-step:55svh}}
+  .showcase-wrap.scroll-mode{position:sticky;top:var(--sc-top);height:var(--sc-h);min-height:0;gap:6px}
+  .showcase-wrap.scroll-mode .showcase-panel{flex:0 0 26px;min-height:0}
+  .showcase-wrap.scroll-mode .showcase-panel.active{flex:1 1 26px;min-height:0}
   .atos-card{padding:4rem 1.5rem}
   .atos-grid{grid-template-columns:1fr;gap:3rem}
   .review-slide.active{grid-template-columns:1fr;gap:2rem}

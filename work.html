@@ -481,6 +481,7 @@ function applyPanelSize(panel){
   const wrap=panel.closest('.showcase-wrap');
   if(!wrap)return;
   if(window.matchMedia('(max-width:768px)').matches){
+    if(wrap.classList.contains('scroll-mode'))return;
     const w=panel.clientWidth||wrap.clientWidth;
     panel.style.minHeight=Math.round(w/ar)+'px';
   }else{
@@ -493,6 +494,7 @@ function applyPanelSize(panel){
   }
 }
 function expandPanel(el){
+  if(el.classList.contains('active')||el.closest('.showcase-wrap.scroll-mode'))return;
   const wrap=el.closest('.showcase-wrap');
   const panels=wrap?wrap.querySelectorAll('.showcase-panel'):document.querySelectorAll('.showcase-panel');
   panels.forEach(p=>{
@@ -540,5 +542,6 @@ window.addEventListener('resize',()=>{
   },150);
 });
 </script>
+<script src="showcase-scroll.js"></script>
 </body>
 </html>
