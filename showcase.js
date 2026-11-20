@@ -1,18 +1,11 @@
-/* Showcases de vídeo (home e Work).
+/* Showcases de vídeo (home e Work) — carrossel infinito em todas as telas.
 
-   Desktop (>768px) — carrossel infinito: o vídeo ativo fica no centro; os demais
-   ficam ao lado/ao fundo com leve blur. Troca por clique no vizinho, arraste,
-   setas, teclado ou swipe horizontal do trackpad.
-
-   Mobile (≤768px) — o bloco fica "pinado" e o scroll alterna o painel expandido
-   (descer revela o próximo, subir traz o anterior).
-
-   Nos dois: clicar no vídeo ativo toca o vídeo ali mesmo, com controles nativos
-   (play/pause, tempo, volume, tela cheia). Nenhum player extra é aberto. */
+   O vídeo ativo fica no centro; os demais ficam ao lado/ao fundo com leve blur.
+   Troca por clique no vizinho, arraste/swipe, setas (desktop), teclado ou swipe
+   horizontal do trackpad. Clicar no vídeo ativo toca ali mesmo, com controles
+   nativos (play/pause, tempo, volume, tela cheia). Nenhum player extra é aberto. */
 (function(){
-  var mqMobile=window.matchMedia('(max-width:768px)');
   var sections=[];
-  var ticking=false;
 
   // x em % da largura do cartão; s=escala; b=blur(px); o=opacidade
   var LOOK=[
@@ -136,38 +129,7 @@
     setActive(s,(s.idx+dir+n)%n);
   }
 
-  /* ---------- scroll (mobile) ---------- */
-  function geometry(s){
-    var r=s.track.getBoundingClientRect();
-    var range=s.track.offsetHeight-s.wrap.offsetHeight;
-    var top=parseFloat(getComputedStyle(s.wrap).top)||0;
-    return {r:r,range:range,top:top};
-  }
-
-  function scrollToIndex(s,i){
-    var g=geometry(s);
-    if(g.range<=0)return;
-    var p=(i+0.5)/s.panels.length;
-    window.scrollTo({top:window.scrollY+g.r.top-(g.top-p*g.range),behavior:'smooth'});
-  }
-
-  function update(){
-    ticking=false;
-    sections.forEach(function(s){
-      if(s.carousel)return;
-      var g=geometry(s);
-      var p=g.range>0?Math.min(1,Math.max(0,(g.top-g.r.top)/g.range)):0;
-      setActive(s,Math.min(s.panels.length-1,Math.floor(p*s.panels.length)));
-    });
-  }
-
-  function requestUpdate(){
-    if(ticking)return;
-    ticking=true;
-    requestAnimationFrame(update);
-  }
-
-  /* ---------- modos ---------- */
+  /* ---------- inicialização ---------- */
   function resetPanels(s){
     s.panels.forEach(function(p){
       leavePanel(p);
@@ -180,7 +142,6 @@
 
   function toCarousel(s){
     s.carousel=true;
-    s.wrap.classList.remove('scroll-mode');
     s.wrap.classList.add('carousel-mode');
     s.wrap.setAttribute('tabindex','0');
     resetPanels(s);
@@ -189,20 +150,6 @@
     s.panels[c].classList.add('active');
     layout(s,true);
     applyView(s);
-  }
-
-  function toScroll(s){
-    s.carousel=false;
-    s.wrap.classList.remove('carousel-mode','dragging');
-    s.wrap.classList.add('scroll-mode');
-    s.wrap.removeAttribute('tabindex');
-    s.wrap.style.removeProperty('--drag');
-    resetPanels(s);
-  }
-
-  function sync(){
-    sections.forEach(mqMobile.matches?toScroll:toCarousel);
-    if(mqMobile.matches)update();
   }
 
   /* ---------- montagem ---------- */
@@ -218,16 +165,8 @@
   }
 
   function build(wrap){
-    var track=wrap.parentElement;
-    if(!track.classList.contains('showcase-track')){
-      track=document.createElement('div');
-      track.className='showcase-track';
-      wrap.parentNode.insertBefore(track,wrap);
-      track.appendChild(wrap);
-    }
     var panels=Array.prototype.slice.call(wrap.querySelectorAll('.showcase-panel'));
-    track.style.setProperty('--sc-n',panels.length);
-    var s={wrap:wrap,track:track,panels:panels,idx:-1,inView:false,player:false,carousel:false};
+    var s={wrap:wrap,panels:panels,idx:-1,inView:false,player:false,carousel:false};
     wrap._s=s;
 
     var prev=makeArrow('sc-prev','Vídeo anterior','M10 3L5 8l5 5');
@@ -245,7 +184,7 @@
       if(!panel||e.target.closest('.panel-project'))return;
       var i=panels.indexOf(panel);
       if(i!==s.idx){
-        if(s.carousel)setActive(s,i);else scrollToIndex(s,i);
+        setActive(s,i);
       }else if(!s.player){
         enterPlayer(s);
       }
@@ -324,9 +263,5 @@
   },{threshold:0.25});
   sections.forEach(function(s){io.observe(s.wrap);});
 
-  window.addEventListener('scroll',requestUpdate,{passive:true});
-  window.addEventListener('resize',requestUpdate);
-  if(mqMobile.addEventListener)mqMobile.addEventListener('change',sync);
-  else if(mqMobile.addListener)mqMobile.addListener(sync);
-  sync();
+  sections.forEach(toCarousel);
 })();

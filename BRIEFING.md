@@ -33,7 +33,7 @@ O site é uma adaptação estrutural de **https://auteurstudios.au** (produtora 
 | **Preloader** | Home | Logo + frase, fade-out após ~900ms |
 | **Text roll** | Todos os botões | Texto duplicado dentro de uma janela de altura `1.2em` com `overflow:hidden`; no hover o trilho desliza `translateY(-1.2em)` |
 | **Título romano → itálico** | Showcase (home), cards (work) | Duas versões sobrepostas, opacidade cruzada no hover |
-| **Carrossel infinito** | Home e Work | Desktop: cartões 9:16 absolutos; o ativo no centro, vizinhos menores com leve blur (`--x/--s/--blur/--op` calculados em `showcase.js`). Troca por clique, arraste, setas ou trackpad. Mobile: bloco pinado, o scroll alterna o painel expandido |
+| **Carrossel infinito** | Home e Work | Mesmo carrossel em desktop e mobile: cartões 9:16 absolutos; o ativo no centro, vizinhos menores com leve blur (`--x/--s/--blur/--op` calculados em `showcase.js`). Troca por clique no vizinho, arraste/swipe, setas (só desktop), teclado ou trackpad. No mobile o cartão central ocupa ~68% da largura e os vizinhos espiam nas laterais |
 | **Player inline** | Home e Work | Clique no vídeo ativo toca ali mesmo com controles nativos (sem modal) |
 | **Grid selado + hover video** | Work | Gap zero, cantos retos; poster estático → vídeo `.mp4` local em autoplay silencioso no hover |
 | **Reveal on scroll** | Todas | IntersectionObserver adiciona `.visible` em `.reveal` |

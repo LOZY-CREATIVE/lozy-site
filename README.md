@@ -33,7 +33,7 @@ Domínio: `lozycreative.com.br` (DNS no Registro.br apontando para o GitHub Page
 | Dados dos projetos (título, descrição, metadados) | objeto `PROJECTS` no `<script>` do `projeto.html` |
 | Projetos do Work | blocos `.showcase-panel` no `work.html` (um carrossel por seção) |
 | Projetos do carrossel da home | blocos `.showcase-panel` no `index.html` |
-| Comportamento dos carrosséis (desktop e mobile) | `showcase.js` + bloco "Carrossel infinito" do `styles.css` |
+| Comportamento dos carrosséis | `showcase.js` + bloco "Carrossel infinito" do `styles.css` |
 | Paleta | bloco `:root` no `<style>` de cada página |
 
 **Atenção:** o CSS está duplicado em cada página. Alterações de paleta ou de
