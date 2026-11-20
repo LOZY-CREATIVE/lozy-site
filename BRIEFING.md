@@ -33,7 +33,8 @@ O site é uma adaptação estrutural de **https://auteurstudios.au** (produtora 
 | **Preloader** | Home | Logo + frase, fade-out após ~900ms |
 | **Text roll** | Todos os botões | Texto duplicado dentro de uma janela de altura `1.2em` com `overflow:hidden`; no hover o trilho desliza `translateY(-1.2em)` |
 | **Título romano → itálico** | Showcase (home), cards (work) | Duas versões sobrepostas, opacidade cruzada no hover |
-| **Acordeão horizontal** | Home, seção showcase | 5 painéis em flex; `flex:1` colapsado, `flex:7` ativo; `transition: flex .65s` disparado no `mouseenter` |
+| **Carrossel infinito** | Home e Work | Desktop: cartões 9:16 absolutos; o ativo no centro, vizinhos menores com leve blur (`--x/--s/--blur/--op` calculados em `showcase.js`). Troca por clique, arraste, setas ou trackpad. Mobile: bloco pinado, o scroll alterna o painel expandido |
+| **Player inline** | Home e Work | Clique no vídeo ativo toca ali mesmo com controles nativos (sem modal) |
 | **Grid selado + hover video** | Work | Gap zero, cantos retos; poster estático → vídeo `.mp4` local em autoplay silencioso no hover |
 | **Reveal on scroll** | Todas | IntersectionObserver adiciona `.visible` em `.reveal` |
 | **Nav adaptativo** | Todas | Transparente sobre hero escuro → sólido ao scrollar; logo troca cream ↔ black |
@@ -114,7 +115,7 @@ assets/        8 PNGs de marca (fundo sólido, precisa extração)
 2. **Hero** — card escuro com `border-radius: 20px` dentro de moldura areia de 14px. **Slot reservado para o vídeo reel principal** (Leo vai editar um vídeo de melhores takes). Texto: `[FRASE PRINCIPAL]` em caps + `[Subfrase em itálico]`. Botão único "Entrar em contato"
 3. **Verbete "lo·zy"** — formato de dicionário. Definição em placeholder
 4. **Trusted** — fundo vinho, 8 slots de logo (atualmente placeholders com nome em texto)
-5. **Showcase** — acordeão horizontal, projetos em destaque, clique abre modal com o vídeo (`.mp4` local)
+5. **Showcase** — carrossel infinito, projetos em destaque, clique toca o vídeo inline com controles (`.mp4` local)
 6. **Ponte** — faixa de 420px, fundo vinho, frase placeholder + botão "Sobre nós"
 7. **Três atos** — coluna esquerda com 01/02/03 empilhados, coluna direita com slot de vídeo sticky
 8. **Depoimentos** — fundo terracota, carrossel de 3 slides com dots

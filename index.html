@@ -103,7 +103,7 @@
 
 <section id="showcase">
   <div class="showcase-wrap">
-    <div class="showcase-panel active" data-vid="alan-baic-v1" onmouseenter="expandPanel(this)" onclick="openModal('alan-baic-v1')">
+    <div class="showcase-panel active" data-vid="alan-baic-v1">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="alan-baic-v1" src="assets/videos/projects/alan-baic-v1-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/alan-baic-v1.mp4" data-vid="alan-baic-v1" muted loop playsinline tabindex="-1"></video>
@@ -116,7 +116,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="ritua-1a-edicao" onmouseenter="expandPanel(this)" onclick="openModal('ritua-1a-edicao')">
+    <div class="showcase-panel" data-vid="ritua-1a-edicao">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="ritua-1a-edicao" src="assets/videos/projects/ritua-1a-edicao-poster.jpg?v=1788140103" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/ritua-1a-edicao.mp4" data-vid="ritua-1a-edicao" muted loop playsinline tabindex="-1"></video>
@@ -129,7 +129,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="larissa-blefaroplastia" onmouseenter="expandPanel(this)" onclick="openModal('larissa-blefaroplastia')">
+    <div class="showcase-panel" data-vid="larissa-blefaroplastia">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="larissa-blefaroplastia" src="assets/videos/projects/larissa-blefaroplastia-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/larissa-blefaroplastia.mp4" data-vid="larissa-blefaroplastia" muted loop playsinline tabindex="-1"></video>
@@ -144,7 +144,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="bella-nike-selecao" onmouseenter="expandPanel(this)" onclick="openModal('bella-nike-selecao')">
+    <div class="showcase-panel" data-vid="bella-nike-selecao">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="bella-nike-selecao" src="assets/videos/projects/bella-nike-selecao-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/bella-nike-selecao.mp4" data-vid="bella-nike-selecao" muted loop playsinline tabindex="-1"></video>
@@ -159,7 +159,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="isabelli-profuse-2" onmouseenter="expandPanel(this)" onclick="openModal('isabelli-profuse-2')">
+    <div class="showcase-panel" data-vid="isabelli-profuse-2">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="isabelli-profuse-2" src="assets/videos/projects/isabelli-profuse-2-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse-2.mp4" data-vid="isabelli-profuse-2" muted loop playsinline tabindex="-1"></video>
@@ -172,7 +172,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="joao-wellness-fitbr" onmouseenter="expandPanel(this)" onclick="openModal('joao-wellness-fitbr')">
+    <div class="showcase-panel" data-vid="joao-wellness-fitbr">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="joao-wellness-fitbr" src="assets/videos/projects/joao-wellness-fitbr-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/joao-wellness-fitbr.mp4" data-vid="joao-wellness-fitbr" muted loop playsinline tabindex="-1"></video>
@@ -185,7 +185,7 @@
         <span class="panel-watch">Assistir vídeo completo</span>
       </div>
     </div>
-    <div class="showcase-panel" data-vid="you-chsa" onmouseenter="expandPanel(this)" onclick="openModal('you-chsa')">
+    <div class="showcase-panel" data-vid="you-chsa">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="you-chsa" src="assets/videos/projects/you-chsa-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/you-chsa.mp4" data-vid="you-chsa" muted loop playsinline tabindex="-1"></video>
@@ -293,13 +293,6 @@
   </div>
 </footer>
 
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()">Fechar ✕</button>
-    <div class="modal-iframe-wrap"><video id="modal-video" src="" controls playsinline></video></div>
-  </div>
-</div>
-
 <script>
 const heroVideo=document.getElementById('heroVideo');
 if(heroVideo){
@@ -367,91 +360,13 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const panelVideoAR={};
-function applyPanelSize(panel){
-  const ar=panelVideoAR[panel.dataset.vid];
-  if(!ar)return;
-  const wrap=document.querySelector('.showcase-wrap');
-  if(window.matchMedia('(max-width:768px)').matches){
-    if(wrap.classList.contains('scroll-mode'))return;
-    const w=panel.clientWidth||wrap.clientWidth;
-    panel.style.minHeight=Math.round(w/ar)+'px';
-  }else{
-    const h=wrap.clientHeight;
-    const rawW=h*ar;
-    const otherCount=document.querySelectorAll('.showcase-panel').length-1;
-    const maxW=wrap.clientWidth-(otherCount*80);
-    const w=Math.max(320,Math.min(maxW,rawW));
-    panel.style.flex='0 0 '+Math.round(w)+'px';
-  }
-}
-function expandPanel(el){
-  if(el.classList.contains('active')||el.closest('.showcase-wrap.scroll-mode'))return;
-  document.querySelectorAll('.showcase-panel').forEach(p=>{
-    if(p!==el){
-      clearTimeout(p._playTimer);
-      p.classList.remove('active','playing');
-      p.style.flex='';
-      p.style.minHeight='';
-      const pv=p.querySelector('.panel-video');
-      if(pv)pv.pause();
-    }
-  });
-  el.classList.add('active');
-  applyPanelSize(el);
-  clearTimeout(el._playTimer);
-  el._playTimer=setTimeout(()=>{
-    const vid=el.querySelector('.panel-video');
-    if(vid){
-      if(!vid.src)vid.src=vid.dataset.src;
-      vid.play().catch(()=>{});
-    }
-    el.classList.add('playing');
-  },180);
-}
-document.querySelectorAll('.panel-poster').forEach(img=>{
-  const id=img.dataset.vid;
-  const panel=img.closest('.showcase-panel');
-  const setAR=()=>{
-    if(img.naturalWidth&&img.naturalHeight){
-      panelVideoAR[id]=img.naturalWidth/img.naturalHeight;
-      if(panel.classList.contains('active'))applyPanelSize(panel);
-    }
-  };
-  if(img.complete&&img.naturalWidth)setAR();
-  else img.addEventListener('load',setAR);
-});
-let showcaseResizeTimer;
-window.addEventListener('resize',()=>{
-  clearTimeout(showcaseResizeTimer);
-  showcaseResizeTimer=setTimeout(()=>{
-    const activePanel=document.querySelector('.showcase-panel.active');
-    if(activePanel)applyPanelSize(activePanel);
-  },150);
-});
 function showReview(n){
   document.querySelectorAll('.review-slide').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.review-dot').forEach(d=>d.classList.remove('active'));
   document.getElementById('review-'+n).classList.add('active');
   document.querySelectorAll('.review-dot')[n-1].classList.add('active');
 }
-function openModal(id){
-  const v=document.getElementById('modal-video');
-  v.src='assets/videos/projects/'+id+'.mp4';
-  v.play().catch(()=>{});
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(e){
-  if(e&&e.target!==e.currentTarget)return;
-  const v=document.getElementById('modal-video');
-  v.pause();
-  v.src='';
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
-<script src="showcase-scroll.js"></script>
+<script src="showcase.js"></script>
 </body>
 </html>

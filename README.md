@@ -5,7 +5,7 @@ Site institucional da Lozy Creative. HTML/CSS/JS puro, sem build, para GitHub Pa
 ## Arquivos
 
 - `index.html` — Home
-- `work.html` — Portfólio (grid selado, hover video)
+- `work.html` — Portfólio (um carrossel de vídeos por categoria)
 - `projeto.html` — Case study dinâmico (`projeto.html?id={slug}`)
 - `sobre.html` — Sobre
 - `contato.html` — Contato
@@ -31,8 +31,9 @@ Domínio: `lozycreative.com.br` (DNS no Registro.br apontando para o GitHub Page
 | O quê | Onde |
 |---|---|
 | Dados dos projetos (título, descrição, metadados) | objeto `PROJECTS` no `<script>` do `projeto.html` |
-| Projetos do grid | blocos `.w-card` no `work.html` |
-| Projetos do acordeão da home | blocos `.showcase-panel` no `index.html` |
+| Projetos do Work | blocos `.showcase-panel` no `work.html` (um carrossel por seção) |
+| Projetos do carrossel da home | blocos `.showcase-panel` no `index.html` |
+| Comportamento dos carrosséis (desktop e mobile) | `showcase.js` + bloco "Carrossel infinito" do `styles.css` |
 | Paleta | bloco `:root` no `<style>` de cada página |
 
 **Atenção:** o CSS está duplicado em cada página. Alterações de paleta ou de
