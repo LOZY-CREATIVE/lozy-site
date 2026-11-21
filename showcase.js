@@ -64,6 +64,7 @@
     if(!v.getAttribute('src'))v.src=v.dataset.src;
     s.player=true;
     p.classList.add('in-player','playing');
+    if(s.carousel)layout(s); // vídeo horizontal abre em 16:9 ao ser clicado
     v.loop=false;v.controls=true;v.muted=false;
     try{v.currentTime=0;}catch(e){}
     var pr=v.play();
@@ -112,7 +113,7 @@
     var maxV=Math.max(1,Math.min(3,Math.floor(n/2)-1));
     var H=s.wrap.clientHeight,W=s.wrap.clientWidth,bw=H*9/16;
     var act=s.panels[s.idx];
-    var ar=act&&act._ar>1.05?Math.min(act._ar,2.4):0;
+    var ar=act&&s.player&&act._ar>1.05?Math.min(act._ar,2.4):0;
     var aw=bw,ah=H;
     if(H&&ar){
       aw=Math.min(H*ar,W*(mqDesktop.matches?0.7:0.94));
