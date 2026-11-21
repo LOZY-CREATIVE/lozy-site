@@ -48,7 +48,9 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 2rem 4rem}
 select,input[type=text],textarea{font:inherit;width:100%;padding:.6rem .7rem;border:1px solid var(--linha);border-radius:10px;background:rgba(255,255,255,.7);color:var(--petroleo)}
 .addrow select{width:auto;min-width:260px}
 .foot{margin-top:2rem;font-size:12.5px;color:rgba(23,49,59,.6)}
-dialog{border:0;border-radius:18px;padding:1.6rem;max-width:720px;width:calc(100% - 2rem);max-height:calc(100vh - 2rem);overflow:auto;background:var(--marfim);color:var(--petroleo);box-shadow:0 20px 60px rgba(23,49,59,.35)}
+dialog{border:0;border-radius:18px;padding:0;max-width:720px;width:calc(100% - 2rem);background:var(--marfim);color:var(--petroleo);box-shadow:0 20px 60px rgba(23,49,59,.35);overflow:visible}
+/* a rolagem fica num bloco interno (não no próprio <dialog>): no Safari, dialog com overflow podia abrir em branco */
+.dlg-body,#formProject{display:block;padding:1.6rem;max-height:calc(100vh - 2rem);overflow-y:auto;border-radius:18px;background:var(--marfim);color:var(--petroleo)}
 dialog::backdrop{background:rgba(23,49,59,.5)}
 dialog h2{font-size:1.3rem;margin-bottom:1rem}
 .block{border:1px solid var(--linha);border-radius:14px;padding:.9rem 1rem 1rem;margin:0 0 1rem}

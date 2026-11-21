@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
 <title>Painel de vídeos · Lozy Creative</title>
 <link rel="stylesheet" href="admin.css">
 </head>
@@ -123,7 +124,7 @@
 
 <!-- Remover -->
 <dialog id="dlgDelete">
-  <form method="dialog">
+  <div class="dlg-body">
     <h2>Remover vídeo?</h2>
     <p id="delText"></p>
     <label class="check"><input type="checkbox" id="delFiles" checked> Apagar também os arquivos de vídeo e capa deste computador</label>
@@ -132,12 +133,12 @@
       <button type="button" class="btn ghost" id="delCancel">Cancelar</button>
       <button type="button" class="btn danger" id="delOk">Remover</button>
     </div>
-  </form>
+  </div>
 </dialog>
 
 <!-- Revisar e publicar -->
 <dialog id="dlgReview">
-  <form method="dialog">
+  <div class="dlg-body">
     <h2>Revisar antes de publicar</h2>
     <div id="reviewBody"></div>
     <div id="publishBlock">
@@ -152,7 +153,7 @@
       <button type="button" class="btn ghost" id="pubClose">Fechar</button>
       <button type="button" class="btn primary" id="pubGo" disabled>Publicar no site</button>
     </div>
-  </form>
+  </div>
 </dialog>
 
 <div id="toast" class="toast" hidden></div>

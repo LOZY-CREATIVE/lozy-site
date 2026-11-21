@@ -104,10 +104,22 @@
     return d;
   }
 
+  /* Cards são 9:16. Se o vídeo ativo for horizontal (poster mais largo que alto),
+     o card ativo se abre em proporção 16:9 e os vizinhos abrem espaço para ele. */
   function layout(s,instant){
     var n=s.panels.length;
     var LOOK=mqDesktop.matches?LOOK_DESKTOP:LOOK_MOBILE;
     var maxV=Math.max(1,Math.min(3,Math.floor(n/2)-1));
+    var H=s.wrap.clientHeight,W=s.wrap.clientWidth,bw=H*9/16;
+    var act=s.panels[s.idx];
+    var ar=act&&act._ar>1.05?Math.min(act._ar,2.4):0;
+    var aw=bw,ah=H;
+    if(H&&ar){
+      aw=Math.min(H*ar,W*(mqDesktop.matches?0.7:0.94));
+      ah=aw/ar;
+      if(aw<=bw+1){aw=bw;ah=H;ar=0;}
+    }else ar=0;
+    var shift=(aw-bw)/2;
     if(instant)s.wrap.classList.add('no-anim');
     s.panels.forEach(function(p,i){
       var o=offsetOf(i,s.idx,n),a=Math.abs(o),sign=o<0?-1:1;
@@ -121,12 +133,20 @@
         p.style.transition='opacity .6s ease,filter .6s ease';
         setTimeout(function(){p.style.transition='';},80);
       }
+      var wide=o===0&&!!ar;
+      if(H){
+        p.style.setProperty('--w',(wide?aw:bw)+'px');
+        p.style.setProperty('--h',(wide?ah:H)+'px');
+        p.style.setProperty('--t',(wide?(H-ah)/2:0)+'px');
+      }
+      p.style.setProperty('--shift',(o===0?0:sign*shift)+'px');
       p.style.setProperty('--x',x+'%');
       p.style.setProperty('--s',hidden?LOOK[3].s:L.s);
       p.style.setProperty('--blur',(hidden?LOOK[3].b:L.b)+'px');
       p.style.setProperty('--op',hidden?0:L.o);
       p.style.setProperty('--z',10-Math.min(a,9));
       p.classList.toggle('is-hidden',hidden);
+      p.classList.toggle('is-wide',wide);
     });
     if(instant){
       void s.wrap.offsetWidth;
@@ -155,7 +175,8 @@
     s.wrap.classList.add('carousel-mode');
     s.wrap.setAttribute('tabindex','0');
     resetPanels(s);
-    var c=Math.floor(s.panels.length/2);
+    // sempre começa no primeiro da ordem definida (painel de vídeos), a cada carregamento ou troca de nicho
+    var c=0;
     s.idx=c;
     s.panels[c].classList.add('active');
     layout(s,true);
@@ -179,6 +200,18 @@
     // all: todos os painéis; panels: só os que passam pelo filtro de nicho (aba Work)
     var s={wrap:wrap,all:panels.slice(),panels:panels,idx:-1,inView:false,player:false,carousel:false};
     wrap._s=s;
+
+    // proporção de cada vídeo, pelo poster (extraído do próprio vídeo)
+    panels.forEach(function(p){
+      var im=p.querySelector('.panel-poster');
+      if(!im)return;
+      function set(){
+        if(!im.naturalWidth||!im.naturalHeight)return;
+        p._ar=im.naturalWidth/im.naturalHeight;
+        if(s.carousel)layout(s);
+      }
+      if(im.complete)set();else im.addEventListener('load',set);
+    });
 
     var prev=makeArrow('sc-prev','Vídeo anterior','M10 3L5 8l5 5');
     var next=makeArrow('sc-next','Próximo vídeo','M6 3l5 5-5 5');
@@ -304,7 +337,9 @@
   window.LozyShowcase={setFilter:setFilter};
 
   // trocou de desktop para mobile (ou o inverso): reposiciona sem animar
-  function relayout(){sections.forEach(function(s){layout(s,true);});}
+  function relayout(){sections.forEach(function(s){if(s.carousel)layout(s,true);});}
+  var rzTimer;
+  window.addEventListener('resize',function(){clearTimeout(rzTimer);rzTimer=setTimeout(relayout,120);});
   if(mqDesktop.addEventListener)mqDesktop.addEventListener('change',relayout);
   else if(mqDesktop.addListener)mqDesktop.addListener(relayout);
 })();

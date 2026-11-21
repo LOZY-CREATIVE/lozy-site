@@ -106,7 +106,7 @@ nav.scrolled .nav-burger span{background:var(--petroleo)}
    O corte (.trusted-view) fica a uma margem da borda, então os logos somem antes de tocar a linha */
 .trusted-band{border:1px solid var(--mar);border-radius:var(--radius);padding:2.1rem .75rem}
 .trusted-view{overflow:hidden}
-.trusted-track{display:flex;width:max-content;animation:trustedMove 60s linear infinite}
+.trusted-track{display:flex;width:max-content;animation:trustedMove 40s linear infinite}
 .trusted-band:hover .trusted-track{animation-play-state:paused}
 @keyframes trustedMove{to{transform:translateX(-50%)}}
 .trusted-set{display:flex;align-items:center;flex:none}
@@ -153,7 +153,7 @@ nav.scrolled .nav-burger span{background:var(--petroleo)}
 .sc-arrow{display:none}
 .showcase-wrap.carousel-mode{position:relative;display:block;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:none;--drag:0px;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
 .showcase-wrap.carousel-mode img{-webkit-user-drag:none;user-drag:none}
-.showcase-wrap.carousel-mode .showcase-panel{position:absolute;top:0;left:50%;height:100%;aspect-ratio:9/16;flex:none;min-height:0;z-index:var(--z,1);opacity:var(--op,1);filter:blur(var(--blur,0px));transform:translateX(calc(-50% + var(--x,0%) + var(--drag,0px))) scale(var(--s,1));transition:transform .7s cubic-bezier(.5,0,.2,1),opacity .6s ease,filter .6s ease;will-change:transform}
+.showcase-wrap.carousel-mode .showcase-panel{position:absolute;top:var(--t,0px);left:50%;width:var(--w,auto);height:var(--h,100%);aspect-ratio:9/16;flex:none;min-height:0;z-index:var(--z,1);opacity:var(--op,1);filter:blur(var(--blur,0px));transform:translateX(calc(-50% + var(--x,0%) + var(--shift,0px) + var(--drag,0px))) scale(var(--s,1));transition:transform .7s cubic-bezier(.5,0,.2,1),width .7s cubic-bezier(.5,0,.2,1),height .7s cubic-bezier(.5,0,.2,1),top .7s cubic-bezier(.5,0,.2,1),opacity .6s ease,filter .6s ease;will-change:transform}
 .showcase-wrap.carousel-mode.dragging .showcase-panel,.showcase-wrap.carousel-mode.no-anim .showcase-panel{transition:none}
 .showcase-wrap.carousel-mode.dragging{cursor:grabbing}
 .showcase-wrap{transition:opacity .3s ease,transform .45s cubic-bezier(.5,0,.2,1)}
@@ -262,7 +262,11 @@ footer{background:var(--petroleo);border-top:1px solid rgba(234,227,214,0.1);pad
   #verbete{padding:3rem 1.5rem 1.5rem}
   #reviews{padding:5rem 1.5rem}
   #trusted{padding:3.5rem 1.5rem}
-  .trusted-band{padding:1.6rem .6rem}
+  .trusted-band{padding:1.3rem .6rem}
+  /* faixa de logos no mobile: logos menores (cabem mais na tela) e passagem mais rápida */
+  .trusted-track{animation-duration:10s}
+  .logo-slot{height:17px;margin-right:1.5rem}
+  .logo-slot img{max-width:68px}
   /* carrossel no mobile: cartão central ~68% da largura, vizinhos espiando nas laterais */
   #showcase{padding-left:0;padding-right:0}
   .showcase-wrap{height:min(121vw,75vh);min-height:0}
