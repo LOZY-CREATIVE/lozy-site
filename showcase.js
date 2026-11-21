@@ -8,12 +8,21 @@
   var sections=[];
 
   // x em % da largura do cartão; s=escala; b=blur(px); o=opacidade
-  var LOOK=[
-    {x:0,  s:1,   b:0,   o:1},
-    {x:66, s:.84, b:2,   o:.9},
-    {x:106,s:.7,  b:3.5, o:.7},
-    {x:142,s:.58, b:5,   o:.45}
+  // Desktop: vizinhos bem afastados para o carrossel ocupar a tela toda
+  var LOOK_DESKTOP=[
+    {x:0,  s:1,   b:0, o:1},
+    {x:80, s:.88, b:2, o:1},
+    {x:152,s:.78, b:3, o:1},
+    {x:214,s:.68, b:4, o:1}
   ];
+  // Mobile: vizinhos só "espiam" nas laterais
+  var LOOK_MOBILE=[
+    {x:0,  s:1,   b:0, o:1},
+    {x:66, s:.84, b:2, o:1},
+    {x:106,s:.7,  b:3, o:1},
+    {x:142,s:.58, b:4, o:1}
+  ];
+  var mqDesktop=window.matchMedia('(min-width:769px)');
 
   /* ---------- vídeo ---------- */
   function vid(p){return p.querySelector('.panel-video');}
@@ -97,6 +106,7 @@
 
   function layout(s,instant){
     var n=s.panels.length;
+    var LOOK=mqDesktop.matches?LOOK_DESKTOP:LOOK_MOBILE;
     var maxV=Math.max(1,Math.min(3,Math.floor(n/2)-1));
     if(instant)s.wrap.classList.add('no-anim');
     s.panels.forEach(function(p,i){
@@ -264,4 +274,8 @@
   sections.forEach(function(s){io.observe(s.wrap);});
 
   sections.forEach(toCarousel);
+  // trocou de desktop para mobile (ou o inverso): reposiciona sem animar
+  function relayout(){sections.forEach(function(s){layout(s,true);});}
+  if(mqDesktop.addEventListener)mqDesktop.addEventListener('change',relayout);
+  else if(mqDesktop.addListener)mqDesktop.addListener(relayout);
 })();

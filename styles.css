@@ -149,8 +149,8 @@ nav.scrolled .nav-burger span{background:var(--ink)}
 .showcase-wrap.carousel-mode.dragging .showcase-panel,.showcase-wrap.carousel-mode.no-anim .showcase-panel{transition:none}
 .showcase-wrap.carousel-mode.dragging{cursor:grabbing}
 .showcase-wrap.carousel-mode .showcase-panel.is-hidden{pointer-events:none}
-.showcase-wrap.carousel-mode .showcase-panel:not(.active) .panel-poster{opacity:.8}
-.showcase-wrap.carousel-mode .showcase-panel:not(.active) .panel-scrim{background:rgba(26,27,29,0.28)}
+.showcase-wrap.carousel-mode .showcase-panel:not(.active) .panel-poster{opacity:1}
+.showcase-wrap.carousel-mode .showcase-panel:not(.active) .panel-scrim{background:rgba(26,27,29,0.14)}
 .showcase-wrap.carousel-mode .sc-arrow{display:flex;position:absolute;z-index:30;top:50%;width:46px;height:46px;margin-top:-23px;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(234,227,214,0.35);background:rgba(26,27,29,0.55);backdrop-filter:blur(6px);color:var(--sand);cursor:pointer;transition:background .3s,border-color .3s}
 .showcase-wrap.carousel-mode .sc-arrow:hover{background:rgba(26,27,29,0.85);border-color:var(--sand)}
 .showcase-wrap.carousel-mode .sc-arrow svg{width:16px;height:16px}
