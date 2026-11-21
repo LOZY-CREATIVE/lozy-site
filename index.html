@@ -341,16 +341,31 @@ if(heroVideo){
     else if(heroVideo.muted){heroVideo.muted=false;setMutedUI(false);}
   });
 }
-window.addEventListener('load',()=>{
+/* Preloader: some quando a imagem do hero estiver pronta, mas nunca antes do tempo mínimo (para a animação
+   aparecer) nem depois do teto. Os tempos contam desde o início da navegação (performance.now), e não desde o
+   evento load, que espera TODAS as imagens da página (capas, logos...) e atrasava a saída. */
+(function(){
   const pre=document.getElementById('preloader');
-  if(pre)setTimeout(()=>{
+  if(!pre)return;
+  const MIN=1700,MAX=3500; // ms desde o início do carregamento
+  let ready=!heroVideo,finished=false;
+  function finish(){
+    if(finished)return;finished=true;
     pre.classList.add('done');
-    if(heroVideo){
-      heroVideo.currentTime=0;
-      heroVideo.play().catch(()=>{});
-    }
-  },3200);
-});
+    if(heroVideo){heroVideo.currentTime=0;heroVideo.play().catch(()=>{});}
+  }
+  if(heroVideo){
+    const ok=()=>{ready=true};
+    heroVideo.addEventListener('loadeddata',ok,{once:true});
+    if(heroVideo.readyState>=2)ok();
+    if(heroVideo.poster){const im=new Image();im.onload=im.onerror=ok;im.src=heroVideo.poster;}
+    window.addEventListener('load',ok,{once:true});
+  }
+  const timer=setInterval(()=>{
+    const t=performance.now();
+    if(t>=MAX||(ready&&t>=MIN)){clearInterval(timer);finish();}
+  },80);
+})();
 const nav=document.getElementById('main-nav');
 const navBurger=document.getElementById('navBurger');
 if(navBurger&&nav){

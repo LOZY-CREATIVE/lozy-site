@@ -114,7 +114,7 @@ assets/        8 PNGs de marca (fundo sólido, precisa extração)
 
 ### index.html — seções na ordem
 
-1. **Preloader** — logo + "Conceito. Imagem. Entrega.", uma palavra por vez, com respiro entre elas (~3,2 s no total)
+1. **Preloader** — logo + "Conceito. Imagem. Entrega.", uma palavra por vez, com respiro entre elas. As palavras completam em 0,5 s, 0,95 s e 1,4 s. O preloader **sai quando a imagem do hero estiver pronta, mas nunca antes de 1,7 s nem depois de 3,5 s**, contados desde o início do carregamento (`MIN`/`MAX` no script de `index.html`). Não espera mais o evento `load`, que esperava todas as imagens da página e atrasava a saída
 2. **Hero** — card escuro com `border-radius: 20px` dentro de moldura marfim de 14px. "Feito de perto." em caps + subfrase em itálico. Botão único "Entrar em contato"
 3. **Verbete "lo·zy"** — formato de dicionário
 4. **Trusted** ("Marcas que confiam na gente") — faixa só com o traçado em Mar (sem preenchimento) sobre fundo marfim, com os logos passando em loop (60 s, o mouse pausa). Os logos são PNGs claros sobre transparente e são pintados de Petróleo por `mask` no CSS (`--logo` inline em cada `.logo-slot`). Para incluir um logo novo, duplique o `<span class="logo-slot">` nos dois conjuntos (o segundo é `aria-hidden`)
