@@ -22,38 +22,61 @@
 
 .proj-client{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mar);margin-bottom:.75rem}
 
-.proj-title{font-family:var(--display);font-size:clamp(2.2rem,5vw,4.2rem);font-weight:400;line-height:1;margin-bottom:2.5rem}
+.proj-title{font-family:var(--display);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;line-height:1;margin:0 0 1rem}
 
 .proj-title em{font-style:normal;color:var(--mar)}
 
-#proj-video-wrap{padding:0 var(--frame) 4rem;background:var(--marfim)}
+/* ═══ Página do projeto: vídeo + informações ═══
+   O vídeo mantém a própria proporção (sem faixas pretas). Vertical: vídeo à esquerda e informações à direita.
+   Horizontal e celular: título, vídeo e detalhes empilhados. A proporção (--ar) vem do poster/vídeo, via JS. */
+#proj-main{padding:0 calc(var(--frame) + 2.5rem) 5rem;background:var(--marfim)}
 
-.proj-video{position:relative;padding-bottom:56.25%;height:0;border-radius:var(--radius);overflow:hidden;background:var(--petroleo)}
+.proj-layout{--ar:1.7778;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "media" "details";gap:2rem 4.5rem;align-items:start;opacity:0;transition:opacity .5s ease}
 
-.proj-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:none;background:#000}
+.proj-layout.ready{opacity:1}
 
-#proj-body{padding:5rem calc(var(--frame) + 2.5rem) 7rem;background:var(--marfim)}
+.proj-head{grid-area:head}
 
-.proj-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:6rem;align-items:start}
+.proj-media{grid-area:media;min-width:0}
 
-.proj-desc p{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:var(--mar);line-height:1.9;margin-bottom:1.4rem}
+.proj-details{grid-area:details;min-width:0;max-width:640px}
 
-.proj-meta{border-top:1px solid var(--border-strong)}
+.proj-video{position:relative;width:100%;aspect-ratio:var(--ar);border-radius:var(--radius);overflow:hidden;background:var(--petroleo)}
 
-.proj-meta-row{display:flex;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--border)}
+.proj-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:none;background:var(--petroleo)}
 
-.proj-meta-k{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mar)}
+.proj-layout.is-horizontal .proj-media{max-width:1280px}
 
-.proj-meta-v{font-family:'Inter',sans-serif;font-size:13px;color:var(--petroleo)}
+.proj-layout.is-vertical{--vw:clamp(240px,calc((100vh - 14rem) * var(--ar)),520px);grid-template-columns:var(--vw) minmax(0,1fr);grid-template-areas:"media head" "media details";grid-template-rows:auto 1fr;gap:0 5rem}
+
+.proj-layout.is-vertical .proj-head{padding-top:.5rem}
+
+.proj-sub{font-family:var(--display);font-size:clamp(1.3rem,2vw,1.8rem);font-weight:400;line-height:1.15;color:var(--mar);margin:0 0 .5rem}
+
+.proj-meta{margin:2rem 0 0;border-top:1px solid var(--border-strong)}
+
+.proj-meta-row{display:flex;justify-content:space-between;gap:2rem;padding:.9rem 0;border-bottom:1px solid var(--border)}
+
+.proj-meta-k{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mar);padding-top:.2rem}
+
+.proj-meta-v{font-family:'Inter',sans-serif;font-size:14px;color:var(--petroleo);text-align:right;margin:0}
+
+.proj-desc{margin-top:2rem}
+
+.proj-desc p{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:rgba(23,49,59,.85);line-height:1.85;margin-bottom:1.2rem;max-width:52ch}
 
 #proj-next{padding:4rem calc(var(--frame) + 2.5rem);background:var(--marfim);text-align:center}
 
 .proj-next-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mar);margin-bottom:1rem}
 
+@media(max-width:900px){
+  .proj-layout.is-vertical{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "media" "details";grid-template-rows:auto;gap:2rem 0}
+  .proj-layout.is-vertical .proj-media{width:min(100%,calc((100svh - 12rem) * var(--ar)));max-width:100%}
+  .proj-layout.is-vertical .proj-head{padding-top:0}
+}
 @media(max-width:768px){
   #proj-hero{padding:6.5rem 1.5rem 0}
-  #proj-body{padding:3rem 1.5rem 5rem}
-  .proj-grid{grid-template-columns:1fr;gap:2.5rem}
+  #proj-main{padding:0 1.5rem 3.5rem}
 }
 </style>
 </head>
@@ -79,23 +102,27 @@
 
 <section id="proj-hero">
   <a href="work.html" class="proj-back">Todos os trabalhos</a>
-  <h1 class="proj-title" id="pTitle"></h1>
 </section>
 
-<div id="proj-video-wrap">
-  <div class="proj-video">
-    <video id="pVideo" src="" poster="" controls playsinline></video>
-  </div>
-</div>
-
-<!-- Descrição, metadados e "continue explorando" desativados por enquanto — fora do escopo da V1.
-<section id="proj-body">
-  <div class="proj-grid">
-    <div class="proj-desc reveal" id="pDesc"></div>
-    <div class="proj-meta reveal" id="pMeta"></div>
+<section id="proj-main">
+  <div class="proj-layout" id="projLayout">
+    <div class="proj-head">
+      <h1 class="proj-title" id="pTitle"></h1>
+      <p class="proj-sub" id="pSub" hidden></p>
+    </div>
+    <div class="proj-media">
+      <div class="proj-video" id="pFrame">
+        <video id="pVideo" src="" poster="" controls playsinline></video>
+      </div>
+    </div>
+    <div class="proj-details" id="pDetails" hidden>
+      <dl class="proj-meta" id="pMeta" hidden></dl>
+      <div class="proj-desc" id="pDesc" hidden></div>
+    </div>
   </div>
 </section>
 
+<!-- "Continue explorando" desativado por enquanto — fora do escopo da V1.
 <section id="proj-next">
   <p class="proj-next-label">Continue explorando</p>
   <a href="work.html" class="btn-roll dark"><span class="roll-inner"><span class="roll-track"><span>Ver todos os trabalhos</span><span>Ver todos os trabalhos</span></span></span></a>
@@ -332,14 +359,48 @@ const PROJECTS = {
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const p = PROJECTS[id];
+const layout = document.getElementById('projLayout');
+// só mostra o que está preenchido: vazio ou texto de exemplo entre colchetes ("[Formato]") não aparece
+const filled = v => { v = String(v == null ? '' : v).trim(); return v && !/^\[.*\]$/.test(v); };
+function setRatio(r){
+  if(!(r > 0) || layout.dataset.ratio) return;
+  layout.dataset.ratio = '1';
+  layout.style.setProperty('--ar', r.toFixed(4));
+  layout.classList.add(r < 1 ? 'is-vertical' : 'is-horizontal', 'ready');
+}
 if(p){
   document.getElementById('pTitle').textContent = p.client;
-  const pVideo=document.getElementById('pVideo');
+  if(filled(p.title) && p.title.trim() !== p.client.trim()){
+    const sub = document.getElementById('pSub'); sub.textContent = p.title; sub.hidden = false;
+  }
+  const meta = document.getElementById('pMeta');
+  [['Categoria', p.tag], ['Ano', (p.meta.find(m => m[0] === 'Ano') || [])[1]], ['Entrega', (p.meta.find(m => m[0] === 'Entrega') || [])[1]]].forEach(function(kv){
+    if(!filled(kv[1])) return;
+    const row = document.createElement('div'); row.className = 'proj-meta-row';
+    const k = document.createElement('dt'); k.className = 'proj-meta-k'; k.textContent = kv[0];
+    const v = document.createElement('dd'); v.className = 'proj-meta-v'; v.textContent = kv[1];
+    row.appendChild(k); row.appendChild(v); meta.appendChild(row); meta.hidden = false;
+  });
+  if(filled(p.desc)){
+    const d = document.getElementById('pDesc');
+    String(p.desc).split(/\n{2,}/).forEach(function(par){ const el = document.createElement('p'); el.textContent = par.trim(); d.appendChild(el); });
+    d.hidden = false;
+  }
+  document.getElementById('pDetails').hidden = !(meta.children.length || filled(p.desc));
+  const pVideo = document.getElementById('pVideo');
+  const posterUrl = 'assets/videos/projects/'+id+'-poster.jpg?v='+Date.now();
   pVideo.src = 'assets/videos/projects/'+id+'.mp4';
-  pVideo.poster = 'assets/videos/projects/'+id+'-poster.jpg?v='+Date.now();
+  pVideo.poster = posterUrl;
   document.title = p.client + ' — Lozy Creative';
+  // a proporção vem do poster (chega primeiro) e é confirmada pelo vídeo
+  const img = new Image();
+  img.onload = function(){ setRatio(img.naturalWidth / img.naturalHeight); };
+  img.src = posterUrl;
+  pVideo.addEventListener('loadedmetadata', function(){ setRatio(pVideo.videoWidth / pVideo.videoHeight); });
+  setTimeout(function(){ setRatio(16 / 9); }, 1500);
 } else {
   document.getElementById('pTitle').textContent = 'Projeto não encontrado';
+  setRatio(16 / 9);
 }
 </script>
 <script>document.querySelectorAll('.ano').forEach(function(e){e.textContent=new Date().getFullYear()})</script>

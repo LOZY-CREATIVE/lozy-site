@@ -138,9 +138,13 @@ A seção "Descubra mais" está comentada no HTML (voltaremos nela com o portfó
 
 ### projeto.html
 
-Template único. Lê `?id=` da URL e popula a partir do objeto `PROJECTS` no topo do `<script>`. Estrutura: breadcrumb → cliente → título → player grande → descrição (esquerda) + metadados (direita) → CTA de volta.
+Template único. Lê `?id=` da URL e popula a partir do objeto `PROJECTS` no `<script>` (esse objeto é **gerado** a partir de `data/projects.json`; não edite à mão, use o painel de vídeos).
 
-**Para editar qualquer projeto, mexer só no objeto `PROJECTS`.**
+Estrutura: "Todos os trabalhos" → bloco com **título (cliente) + subtítulo**, **vídeo** e **detalhes** (categoria, ano, entrega, descrição) → CTA.
+- O vídeo **mantém a própria proporção, sem faixas pretas**. A proporção (`--ar`) é lida do poster (chega primeiro) e confirmada pelo vídeo (`loadedmetadata`).
+- **Vídeo vertical (9:16), desktop:** vídeo à esquerda (largura limitada para caber na altura da tela, entre 240 e 520 px) e título + detalhes à direita (`.is-vertical`).
+- **Vídeo horizontal e celular:** título, vídeo e detalhes empilhados (`.is-horizontal`).
+- **Só aparece o que está preenchido.** Campo vazio ou com texto de exemplo entre colchetes (`[Formato]`, `[Descrição…]`) é escondido. O subtítulo só aparece se for diferente do nome do cliente.
 
 ---
 
