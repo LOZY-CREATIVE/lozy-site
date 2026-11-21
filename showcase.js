@@ -176,7 +176,8 @@
 
   function build(wrap){
     var panels=Array.prototype.slice.call(wrap.querySelectorAll('.showcase-panel'));
-    var s={wrap:wrap,panels:panels,idx:-1,inView:false,player:false,carousel:false};
+    // all: todos os painéis; panels: só os que passam pelo filtro de nicho (aba Work)
+    var s={wrap:wrap,all:panels.slice(),panels:panels,idx:-1,inView:false,player:false,carousel:false};
     wrap._s=s;
 
     var prev=makeArrow('sc-prev','Vídeo anterior','M10 3L5 8l5 5');
@@ -192,7 +193,8 @@
       if(suppress){suppress=false;e.preventDefault();e.stopPropagation();return;}
       var panel=e.target.closest('.showcase-panel');
       if(!panel||e.target.closest('.panel-project'))return;
-      var i=panels.indexOf(panel);
+      var i=s.panels.indexOf(panel);
+      if(i<0)return;
       if(i!==s.idx){
         setActive(s,i);
       }else if(!s.player){
@@ -206,7 +208,7 @@
     wrap.addEventListener('pointerdown',function(e){
       if(!s.carousel||(e.pointerType==='mouse'&&e.button!==0))return;
       if(e.target.closest('.sc-arrow,.panel-project'))return;
-      var onActive=e.target.closest('.showcase-panel')===panels[s.idx];
+      var onActive=e.target.closest('.showcase-panel')===s.panels[s.idx];
       if(s.player&&onActive)return; // não interfere nos controles do vídeo
       drag={x:e.clientX,id:e.pointerId,moved:false};
     });
@@ -225,7 +227,7 @@
       var d=drag;drag=null;
       if(!d.moved)return;
       var dx=e.clientX-d.x;
-      var cardW=panels[s.idx].offsetWidth||300;
+      var cardW=s.panels[s.idx].offsetWidth||300;
       wrap.classList.remove('dragging');
       wrap.style.setProperty('--drag','0px');
       if(Math.abs(dx)>cardW*0.15)go(s,dx<0?1:-1);
@@ -274,6 +276,33 @@
   sections.forEach(function(s){io.observe(s.wrap);});
 
   sections.forEach(toCarousel);
+
+  /* ---------- filtro por nicho (aba Work) ----------
+     Mostra só os painéis de um nicho (data-cat) e remonta o carrossel com os que sobraram.
+     cat='all' mostra todos. Com animate, o bloco some e volta com um deslize curto. */
+  function setFilter(wrap,cat,animate){
+    var s=wrap&&wrap._s;
+    if(!s)return;
+    clearTimeout(s._filterTimer);
+    function apply(){
+      s.all.forEach(function(p){
+        var show=cat==='all'||p.getAttribute('data-cat')===cat;
+        p.classList.toggle('is-filtered',!show);
+        if(!show)leavePanel(p);
+      });
+      s.panels=s.all.filter(function(p){return !p.classList.contains('is-filtered');});
+      if(s.panels.length)toCarousel(s);
+      wrap.classList.remove('swapping');
+    }
+    if(animate){
+      wrap.classList.add('swapping');
+      s._filterTimer=setTimeout(apply,300);
+    }else{
+      apply();
+    }
+  }
+  window.LozyShowcase={setFilter:setFilter};
+
   // trocou de desktop para mobile (ou o inverso): reposiciona sem animar
   function relayout(){sections.forEach(function(s){layout(s,true);});}
   if(mqDesktop.addEventListener)mqDesktop.addEventListener('change',relayout);

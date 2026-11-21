@@ -5,10 +5,9 @@
 
 ## 1. Contexto do projeto
 
-**Lozy Creative** é uma agência de audiovisual em São Paulo, operada solo pelo fundador (Leo). Duas frentes:
+**Lozy Creative** é um estúdio criativo de audiovisual em São Paulo, operado solo pelo fundador (Leo). **Foco atual (atualização de 21/11/2026):** marcas, atletas e influenciadores, em esporte, bem-estar e estilo de vida. Médicos e corporativo continuam sendo atendidos, mas **não são destacados** no site.
 
-- **Lozy Studio** — conteúdo cinematográfico/de marca para marcas, influenciadores e criadores
-- **Lozy Pro** — conteúdo recorrente de alto volume para profissionais (médicos, advogados), formato "Um Mês em Um Dia": uma sessão de captação gera um mês de conteúdo
+Internamente existe a divisão Studio (conteúdo de marca) e Pro (conteúdo recorrente para profissionais), mas **"Studio" e "Pro" não aparecem em lugar nenhum do site** (menu, títulos, botões, seções).
 
 O site antigo (`lozycreative.com`, feito no Canva e limitado — não permitia criar novas abas) foi substituído por este projeto. O domínio antigo venceu e não foi renovado; o endereço oficial agora é `lozycreative.com.br`.
 
@@ -43,34 +42,38 @@ O site é uma adaptação estrutural de **https://auteurstudios.au** (produtora 
 
 ## 3. Identidade visual
 
-### Paleta oficial (do Guia de Voz da Lozy)
+### Paleta oficial (identidade nova, 21/11/2026)
 
 ```css
---sand:      #EAE3D6;  /* fundo principal, texto sobre escuro */
---sand-dark: #E2DAC9;  /* fundo alternado */
---ink:       #1A1B1D;  /* quase-preto: hero, showcase, textos */
---wine:      #4E1A1D;  /* acento: trusted, rodapé, CTA title, história */
---terra:     #8C4530;  /* acento: labels, numeração, depoimentos */
---mid:       #877F72;  /* texto secundário morno */
+--marfim:   #EAE3D6;  /* fundo claro; texto sobre Petróleo */
+--petroleo: #17313B;  /* fundo escuro; texto sobre Marfim */
+--mar:      #2F5D62;  /* acento SOBRE MARFIM (linhas, botões, textos de apoio) */
+--mare:     #7FA9A6;  /* acento SOBRE PETRÓLEO */
 ```
+
+- **Cada acento só na sua superfície.** Maré sobre Marfim e Mar sobre Petróleo não passam no contraste (Marfim/Petróleo 10,7:1; Maré/Petróleo 5,3:1; Mar/Marfim 5,8:1).
+- **Cores chapadas:** sem degradês, vidro fosco (`backdrop-filter`) nem sombras decorativas.
+- Não existem mais Vinho, Terracota nem Grafite Frio. Não reintroduzir.
 
 ### Ritmo de cores da Home (na ordem do scroll)
 
-areia → **vinho** (trusted) → areia → ink (showcase) → **vinho** (ponte) → areia (atos) → **terracota** (depoimentos) → areia (CTA, título em vinho) → **vinho** (rodapé)
+marfim (hero, verbete, faixa de logos) → marfim (showcase) → **mar** (O que fazemos, com cartões marfim) → marfim (CTA, título em petróleo) → **petróleo** (rodapé)
 
 ### Tipografia
 
-- **Montserrat** — display/títulos. Pesos 200, 300, 400, 500 + itálicos 200/300
+- **Garet Book** — títulos de destaque (hero, títulos de seção, nomes dos cartões, números em contorno, CTA), em minúsculas (só a primeira letra em maiúscula, quando for frase). Peso único (400), **sem itálico**. Servida localmente: `assets/fonts/Garet-Book.woff2` e `.woff` (`@font-face` no topo de `styles.css`, variável `--display`). **Pendente:** confirmar a licença de uso na web antes de publicar; a pasta de origem não trazia arquivo de licença.
+- **Montserrat** — verbete, linhas de apoio, citações e as páginas internas (Work, Contato, Sobre, Projeto), que ainda não migraram para a Garet. Pesos 200, 300, 400, 500 + itálicos 200/300
 - **Inter** — corpo, labels, botões. Pesos 300, 400, 500
 
-Carregadas via Google Fonts. **Nenhuma outra família deve entrar no site.**
+Montserrat e Inter vêm do Google Fonts. **Nenhuma outra família deve entrar no site sem aprovação.** Foram testadas e descartadas por ora: Block Berthold (sem licença web confirmada) e Garet Heavy.
 
 ### Assets de marca
 
 Na pasta `assets/`. São JPEGs com fundo sólido (branco nos logos, preto nos símbolos) — **precisam ter o fundo removido programaticamente** antes de usar. O script de extração está na seção 6.
 
-- `logoblack` / `logocream` / `logowine` / `logoterracotta` — logotipo completo
-- `symbolblack` / `symbolcream` / `symbolwine` / `symbolterracotta` — símbolo isolado
+- `logocream` (sobre Petróleo) / `logoblack` (sobre Marfim) — logotipo completo
+- `symbolblack` / `symbolcream` — símbolo isolado
+- **Pendente:** `symbolwine.png` (usado no CTA) precisa ser substituído por versões novas, em Mar sobre Marfim e em Maré ou Marfim sobre Petróleo. Leo envia os arquivos. Os `*wine` e `*terracotta` devem sair de `assets/` quando as novas entrarem.
 
 Atualmente os assets estão **embutidos como base64** dentro de cada HTML. Isso deixa os arquivos pesados (index.html ~1MB). **Melhoria recomendada:** extrair para arquivos `.png` externos na pasta `assets/` e referenciar por caminho relativo.
 
@@ -80,7 +83,7 @@ Atualmente os assets estão **embutidos como base64** dentro de cada HTML. Isso 
 
 Do Guia de Voz oficial:
 
-**Vocabulário da Lozy:** corpo, tempo, forma, ritmo, controle, performance, precisão, constância, presença, cadência, pulso, sustentar, intenção, marco, peso, visão
+**Voz (atualização de 21/11/2026):** declarar (hero, sobre) com frases calmas e curtas; explicar (serviços, processo) de forma direta e concreta; convidar (CTA, contato) de forma falada. Evitar pares de abstratos repetidos ligados por "e" e frases que serviriam em qualquer produtora. O eixo "precisão / controle / corpo e tempo" saiu de todos os textos. **Não reintroduzir.** As frases-manifesto abaixo são do guia antigo e estão obsoletas.
 
 **Vocabulário PROIBIDO:** sinergia, disruptivo, cutting-edge, excelência, paixão por contar histórias, soluções personalizadas, inovador, outside the box
 
@@ -111,26 +114,27 @@ assets/        8 PNGs de marca (fundo sólido, precisa extração)
 
 ### index.html — seções na ordem
 
-1. **Preloader** — logo + frase (placeholder)
-2. **Hero** — card escuro com `border-radius: 20px` dentro de moldura areia de 14px. **Slot reservado para o vídeo reel principal** (Leo vai editar um vídeo de melhores takes). Texto: `[FRASE PRINCIPAL]` em caps + `[Subfrase em itálico]`. Botão único "Entrar em contato"
-3. **Verbete "lo·zy"** — formato de dicionário. Definição em placeholder
-4. **Trusted** — fundo vinho, 8 slots de logo (atualmente placeholders com nome em texto)
+1. **Preloader** — logo + "Conceito. Imagem. Entrega.", uma palavra por vez, com respiro entre elas (~3,2 s no total)
+2. **Hero** — card escuro com `border-radius: 20px` dentro de moldura marfim de 14px. "Feito de perto." em caps + subfrase em itálico. Botão único "Entrar em contato"
+3. **Verbete "lo·zy"** — formato de dicionário
+4. **Trusted** ("Marcas que confiam na gente") — faixa só com o traçado em Mar (sem preenchimento) sobre fundo marfim, com os logos passando em loop (60 s, o mouse pausa). Os logos são PNGs claros sobre transparente e são pintados de Petróleo por `mask` no CSS (`--logo` inline em cada `.logo-slot`). Para incluir um logo novo, duplique o `<span class="logo-slot">` nos dois conjuntos (o segundo é `aria-hidden`)
 5. **Showcase** — carrossel infinito, projetos em destaque, clique toca o vídeo inline com controles (`.mp4` local)
-6. **Ponte** — faixa de 420px, fundo vinho, frase placeholder + botão "Sobre nós"
-7. **Três atos** — coluna esquerda com 01/02/03 empilhados, coluna direita com slot de vídeo sticky
-8. **Depoimentos** — fundo terracota, carrossel de 3 slides com dots
-9. **CTA** — fundo areia, "Tem um *projeto* em mente?" em vinho
-10. **Rodapé** — fundo vinho
+6. **O que fazemos** (`#atos` no HTML) — painel Mar com título, linha de apoio ("Um time montado para cada projeto.") e 5 cartões Marfim (Publicidade, Eventos, Real-time, Direção criativa, Fotografia), cada um com "(01)" em itálico, título em caixa alta, descrição e o número grande em contorno. No hover o cartão inverte para Petróleo. **No celular (≤768 px)** a seção fixa na tela (`.m-pin` > `.m-sticky`) e o cartão troca conforme a rolagem, com os anteriores recuando atrás e cinco traços de progresso; a classe `.m-scroll` é ligada por um script inline em `index.html`
+7. **Depoimentos** — desativados (comentados no HTML)
+8. **CTA** — fundo marfim, "Tem um *projeto* em mente?" em petróleo, botão em Mar
+9. **Rodapé** — fundo petróleo; ano gerado por JS (`.ano`)
 
 ### work.html
 
-Grid selado de 3 colunas, gap zero, 9 projetos. Cada card:
-- Poster estático local (`assets/videos/projects/{slug}-poster.jpg`)
-- `<video>` local (`assets/videos/projects/{slug}.mp4`, `muted loop playsinline`) carregado sob demanda via `data-src` e reproduzido no hover
-- Nome do cliente sempre sobreposto, centralizado
-- Clique → `projeto.html?id={slug}`
+**Um único carrossel infinito** (o mesmo de `showcase.js`) com todos os projetos, e um **seletor de nichos** acima dele: Todos · Marcas & Publicidades · Eventos & Ativações · Médicos. Em vez de rolar para baixo por um carrossel por categoria, o visitante troca o nicho no seletor. Cada painel (`.showcase-panel`) tem `data-cat="marcas|eventos|medicos"`; o seletor chama `window.LozyShowcase.setFilter(wrap, cat, true)`, que esconde os painéis de fora (`.is-filtered`) e remonta o carrossel com os que sobraram, com um fade/deslize curto. O link `work.html#eventos` (ou `#marcas`, `#medicos`) abre já filtrado, e o botão "voltar" do navegador acompanha. Para um projeto novo, copie um `.showcase-panel` e escolha o `data-cat`; para um nicho novo, acrescente um botão `.wf-btn` com `data-filter` igual ao novo `data-cat`.
 
-Seção "Descubra mais" no fim com 3 slots para trabalhos autorais.
+Cada painel:
+- Poster estático local (`assets/videos/projects/{slug}-poster.jpg`)
+- `<video>` local (`assets/videos/projects/{slug}.mp4`, `muted loop playsinline`) carregado sob demanda via `data-src`; o painel ativo toca ali mesmo, com controles nativos
+- Nome do cliente sempre sobreposto, centralizado
+- Botão "Ver projeto completo" → `projeto.html?id={slug}`
+
+A seção "Descubra mais" está comentada no HTML (voltaremos nela com o portfólio novo).
 
 ### projeto.html
 

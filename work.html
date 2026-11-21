@@ -12,54 +12,59 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Work — Lozy Creative</title>
 <style>
-.page-hero{padding:10rem calc(var(--frame) + 2.5rem) 3.5rem;background:var(--sand)}
+.page-hero{padding:10rem calc(var(--frame) + 2.5rem) 3.5rem;background:var(--marfim)}
 
-.page-hero-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mar);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
 
-.page-hero-label::before{content:'';display:block;width:2rem;height:1px;background:var(--terra)}
+.page-hero-label::before{content:'';display:block;width:2rem;height:1px;background:var(--mar)}
 
-.page-hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:200;line-height:1.06}
+.page-hero-title{font-family:var(--display);font-size:clamp(2.6rem,5.5vw,5rem);font-weight:400;line-height:1}
 
-.page-hero-title em{color:var(--wine)}
+.page-hero-title em{font-style:normal;color:var(--mar)}
 
-/* ═══ WORK SHOWCASE — por categoria ═══ */
+/* ═══ WORK SHOWCASE — um carrossel, filtrado por nicho ═══ */
 
-.work-showcase-section{padding:3rem var(--frame)}
+.work-showcase-section{padding:1rem var(--frame) 5rem}
 
-.work-showcase-section:first-of-type{padding-top:4rem}
+.work-filter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 2.2rem calc(var(--frame) + 1.5rem)}
 
-.work-showcase-section:last-of-type{padding-bottom:5rem}
+.wf-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;padding:.8rem 1.4rem;border-radius:999px;background:transparent;color:var(--petroleo);border:1px solid var(--mar);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
 
-.work-category-title{font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(1.5rem,2.6vw,2rem);margin:0 0 1rem calc(var(--frame) + 1.5rem);color:var(--ink)}
+.wf-btn:hover{border-color:var(--petroleo)}
+
+.wf-btn.is-active{background:var(--mar);color:var(--marfim);border-color:var(--mar)}
+
+.wf-btn:focus-visible{outline:2px solid var(--petroleo);outline-offset:2px}
 
 /* Discover more */
 
-#discover{padding:7rem calc(var(--frame) + 2.5rem);background:var(--sand)}
+#discover{padding:7rem calc(var(--frame) + 2.5rem);background:var(--marfim)}
 
-.discover-title{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:200;margin-bottom:3rem}
+.discover-title{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;margin-bottom:3rem}
 
-.discover-title em{color:var(--wine)}
+.discover-title em{font-style:normal;color:var(--mar)}
 
 .discover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
 
 .d-card{cursor:pointer}
 
-.d-thumb{aspect-ratio:16/9;background:var(--sand-dark);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.85rem}
+.d-thumb{aspect-ratio:16/9;background:var(--marfim);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.85rem}
 
 .d-thumb img{width:38px;opacity:.15}
 
-.d-thumb span{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,27,29,.25)}
+.d-thumb span{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(23,49,59,.25)}
 
-.d-name{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:200}
+.d-name{font-family:var(--display);font-size:1.15rem;font-weight:400}
 
-.d-cat{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.d-cat{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mar)}
 
 @media(max-width:768px){
   .page-hero{padding:7rem 1.5rem 2.5rem}
   #discover{padding:4rem 1.5rem}
-  .work-showcase-section{padding:2rem 1.5rem}
+  .work-showcase-section{padding:.5rem 1.5rem 3rem}
   .work-showcase-section .showcase-wrap{margin-left:-1.5rem;margin-right:-1.5rem}
-  .work-category-title{margin-left:0}
+  .work-filter{margin-left:0;margin-bottom:1.6rem}
+  .wf-btn{padding:.7rem 1.1rem;font-size:10.5px}
 }
 </style>
 </head>
@@ -88,10 +93,15 @@
   <h1 class="page-hero-title">Todos os<br><em>trabalhos.</em></h1>
 </section>
 
-<section class="work-showcase-section">
-  <h2 class="work-category-title">Marcas & Publicidades</h2>
-  <div class="showcase-wrap">
-    <div class="showcase-panel" data-vid="alan-baic-v1">
+<section class="work-showcase-section" id="workShowcase">
+  <div class="work-filter" role="tablist" aria-label="Filtrar projetos por nicho">
+    <button type="button" class="wf-btn is-active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+    <button type="button" class="wf-btn" role="tab" aria-selected="false" data-filter="marcas">Marcas &amp; Publicidades</button>
+    <button type="button" class="wf-btn" role="tab" aria-selected="false" data-filter="eventos">Eventos &amp; Ativações</button>
+    <button type="button" class="wf-btn" role="tab" aria-selected="false" data-filter="medicos">Médicos</button>
+  </div>
+  <div class="showcase-wrap" id="workWrap">
+    <div class="showcase-panel" data-cat="marcas" data-vid="alan-baic-v1">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="alan-baic-v1" src="assets/videos/projects/alan-baic-v1-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/alan-baic-v1.mp4" data-vid="alan-baic-v1" muted loop playsinline tabindex="-1"></video>
@@ -105,7 +115,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=alan-baic-v1">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="bella-nike-selecao">
+    <div class="showcase-panel" data-cat="marcas" data-vid="bella-nike-selecao">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="bella-nike-selecao" src="assets/videos/projects/bella-nike-selecao-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/bella-nike-selecao.mp4" data-vid="bella-nike-selecao" muted loop playsinline tabindex="-1"></video>
@@ -121,7 +131,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=bella-nike-selecao">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="joao-abarth">
+    <div class="showcase-panel" data-cat="marcas" data-vid="joao-abarth">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="joao-abarth" src="assets/videos/projects/joao-abarth-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/joao-abarth.mp4" data-vid="joao-abarth" muted loop playsinline tabindex="-1"></video>
@@ -137,7 +147,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=joao-abarth">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="isabelli-profuse">
+    <div class="showcase-panel" data-cat="marcas" data-vid="isabelli-profuse">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="isabelli-profuse" src="assets/videos/projects/isabelli-profuse-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse.mp4" data-vid="isabelli-profuse" muted loop playsinline tabindex="-1"></video>
@@ -153,7 +163,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=isabelli-profuse">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="pedro-fila">
+    <div class="showcase-panel" data-cat="marcas" data-vid="pedro-fila">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="pedro-fila" src="assets/videos/projects/pedro-fila-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/pedro-fila.mp4" data-vid="pedro-fila" muted loop playsinline tabindex="-1"></video>
@@ -169,7 +179,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=pedro-fila">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="dot-rappi">
+    <div class="showcase-panel" data-cat="marcas" data-vid="dot-rappi">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="dot-rappi" src="assets/videos/projects/dot-rappi-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/dot-rappi.mp4" data-vid="dot-rappi" muted loop playsinline tabindex="-1"></video>
@@ -183,7 +193,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=dot-rappi">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="isabelli-profuse-2">
+    <div class="showcase-panel" data-cat="marcas" data-vid="isabelli-profuse-2">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="isabelli-profuse-2" src="assets/videos/projects/isabelli-profuse-2-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/isabelli-profuse-2.mp4" data-vid="isabelli-profuse-2" muted loop playsinline tabindex="-1"></video>
@@ -197,7 +207,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=isabelli-profuse-2">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="dot-g4-ads">
+    <div class="showcase-panel" data-cat="marcas" data-vid="dot-g4-ads">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="dot-g4-ads" src="assets/videos/projects/dot-g4-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/dot-g4-ads.mp4" data-vid="dot-g4-ads" muted loop playsinline tabindex="-1"></video>
@@ -211,13 +221,8 @@
       </div>
       <a class="panel-project" href="projeto.html?id=dot-g4-ads">Ver projeto completo</a>
     </div>
-  </div>
-</section>
-
-<section class="work-showcase-section">
-  <h2 class="work-category-title">Eventos & Ativações</h2>
-  <div class="showcase-wrap">
-    <div class="showcase-panel" data-vid="joao-wellness-fitbr">
+  
+    <div class="showcase-panel" data-cat="eventos" data-vid="joao-wellness-fitbr">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="joao-wellness-fitbr" src="assets/videos/projects/joao-wellness-fitbr-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/joao-wellness-fitbr.mp4" data-vid="joao-wellness-fitbr" muted loop playsinline tabindex="-1"></video>
@@ -231,7 +236,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=joao-wellness-fitbr">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="you-chsa">
+    <div class="showcase-panel" data-cat="eventos" data-vid="you-chsa">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="you-chsa" src="assets/videos/projects/you-chsa-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/you-chsa.mp4" data-vid="you-chsa" muted loop playsinline tabindex="-1"></video>
@@ -245,7 +250,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=you-chsa">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="ritua-1a-edicao">
+    <div class="showcase-panel" data-cat="eventos" data-vid="ritua-1a-edicao">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="ritua-1a-edicao" src="assets/videos/projects/ritua-1a-edicao-poster.jpg?v=1788140103" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/ritua-1a-edicao.mp4" data-vid="ritua-1a-edicao" muted loop playsinline tabindex="-1"></video>
@@ -259,7 +264,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=ritua-1a-edicao">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="ritua-outlive">
+    <div class="showcase-panel" data-cat="eventos" data-vid="ritua-outlive">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="ritua-outlive" src="assets/videos/projects/ritua-outlive-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/ritua-outlive.mp4" data-vid="ritua-outlive" muted loop playsinline tabindex="-1"></video>
@@ -273,7 +278,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=ritua-outlive">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="ritua-2a-edicao">
+    <div class="showcase-panel" data-cat="eventos" data-vid="ritua-2a-edicao">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="ritua-2a-edicao" src="assets/videos/projects/ritua-2a-edicao-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/ritua-2a-edicao.mp4" data-vid="ritua-2a-edicao" muted loop playsinline tabindex="-1"></video>
@@ -287,7 +292,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=ritua-2a-edicao">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="ritua-blessy">
+    <div class="showcase-panel" data-cat="eventos" data-vid="ritua-blessy">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="ritua-blessy" src="assets/videos/projects/ritua-blessy-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/ritua-blessy.mp4" data-vid="ritua-blessy" muted loop playsinline tabindex="-1"></video>
@@ -301,13 +306,8 @@
       </div>
       <a class="panel-project" href="projeto.html?id=ritua-blessy">Ver projeto completo</a>
     </div>
-  </div>
-</section>
-
-<section class="work-showcase-section">
-  <h2 class="work-category-title">Médicos</h2>
-  <div class="showcase-wrap">
-    <div class="showcase-panel" data-vid="larissa-blefaroplastia">
+  
+    <div class="showcase-panel" data-cat="medicos" data-vid="larissa-blefaroplastia">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="larissa-blefaroplastia" src="assets/videos/projects/larissa-blefaroplastia-poster.jpg?v=1788383053" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/larissa-blefaroplastia.mp4" data-vid="larissa-blefaroplastia" muted loop playsinline tabindex="-1"></video>
@@ -323,7 +323,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=larissa-blefaroplastia">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="larissa-mini-lipo">
+    <div class="showcase-panel" data-cat="medicos" data-vid="larissa-mini-lipo">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="larissa-mini-lipo" src="assets/videos/projects/larissa-mini-lipo-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/larissa-mini-lipo.mp4" data-vid="larissa-mini-lipo" muted loop playsinline tabindex="-1"></video>
@@ -339,7 +339,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=larissa-mini-lipo">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="rafael-ultramar-brunella">
+    <div class="showcase-panel" data-cat="medicos" data-vid="rafael-ultramar-brunella">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="rafael-ultramar-brunella" src="assets/videos/projects/rafael-ultramar-brunella-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/rafael-ultramar-brunella.mp4" data-vid="rafael-ultramar-brunella" muted loop playsinline tabindex="-1"></video>
@@ -353,7 +353,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=rafael-ultramar-brunella">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="augusto-cirurgia">
+    <div class="showcase-panel" data-cat="medicos" data-vid="augusto-cirurgia">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="augusto-cirurgia" src="assets/videos/projects/augusto-cirurgia-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/augusto-cirurgia.mp4" data-vid="augusto-cirurgia" muted loop playsinline tabindex="-1"></video>
@@ -369,7 +369,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=augusto-cirurgia">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="joao-malta-nutri">
+    <div class="showcase-panel" data-cat="medicos" data-vid="joao-malta-nutri">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="joao-malta-nutri" src="assets/videos/projects/joao-malta-nutri-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/joao-malta-nutri.mp4" data-vid="joao-malta-nutri" muted loop playsinline tabindex="-1"></video>
@@ -385,7 +385,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=joao-malta-nutri">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="augusto-extrator-ads">
+    <div class="showcase-panel" data-cat="medicos" data-vid="augusto-extrator-ads">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="augusto-extrator-ads" src="assets/videos/projects/augusto-extrator-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/augusto-extrator-ads.mp4" data-vid="augusto-extrator-ads" muted loop playsinline tabindex="-1"></video>
@@ -401,7 +401,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=augusto-extrator-ads">Ver projeto completo</a>
     </div>
-    <div class="showcase-panel" data-vid="augusto-mounjaro-ads">
+    <div class="showcase-panel" data-cat="medicos" data-vid="augusto-mounjaro-ads">
       <div class="panel-bg">
         <img class="panel-poster" data-vid="augusto-mounjaro-ads" src="assets/videos/projects/augusto-mounjaro-ads-poster.jpg?v=1788383054" alt="" onerror="this.style.display='none'">
         <video class="panel-video" data-src="assets/videos/projects/augusto-mounjaro-ads.mp4" data-vid="augusto-mounjaro-ads" muted loop playsinline tabindex="-1"></video>
@@ -417,6 +417,7 @@
       </div>
       <a class="panel-project" href="projeto.html?id=augusto-mounjaro-ads">Ver projeto completo</a>
     </div>
+  
   </div>
 </section>
 
@@ -435,7 +436,7 @@
   <img class="cta-symbol" src="assets/symbolwine.png" alt="">
   <h2 class="cta-title reveal">Tem um <em>projeto</em><br>em mente?</h2>
   <div class="cta-actions">
-    <a href="contato.html" class="btn-roll wine"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
+    <a href="contato.html" class="btn-roll mar"><span class="roll-inner"><span class="roll-track"><span>Vamos criar</span><span>Vamos criar</span></span></span></a>
   </div>
 </section>
 <footer>
@@ -460,7 +461,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Lozy Creative. Todos os direitos reservados.</span>
+    <span>© <span class="ano">2026</span> Lozy Creative. Todos os direitos reservados.</span>
     <span>São Paulo, Brasil</span>
   </div>
 </footer>
@@ -498,5 +499,27 @@ const obs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 <script src="showcase.js"></script>
+<script>
+/* Seletor de nichos: filtra o carrossel (o link /work.html#eventos já abre filtrado) */
+(function(){
+  var wrap=document.getElementById('workWrap');
+  var btns=[].slice.call(document.querySelectorAll('.wf-btn'));
+  if(!wrap||!window.LozyShowcase||!btns.length)return;
+  function key(b){return b.getAttribute('data-filter');}
+  function select(cat,animate){
+    btns.forEach(function(b){var on=key(b)===cat;b.classList.toggle('is-active',on);b.setAttribute('aria-selected',on?'true':'false');});
+    window.LozyShowcase.setFilter(wrap,cat,animate);
+    try{history.replaceState(null,'',cat==='all'?location.pathname+location.search:'#'+cat);}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){if(!b.classList.contains('is-active'))select(key(b),true);});});
+  function fromHash(animate){
+    var h=location.hash.replace('#','')||'all';
+    if(btns.some(function(b){return key(b)===h;})&&!btns.some(function(b){return key(b)===h&&b.classList.contains('is-active');}))select(h,animate);
+  }
+  fromHash(false);
+  window.addEventListener('hashchange',function(){fromHash(true);});
+})();
+</script>
+<script>document.querySelectorAll('.ano').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
 </body>
 </html>
