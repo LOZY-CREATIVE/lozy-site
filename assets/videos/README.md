@@ -1,5 +1,9 @@
 # Vídeos do site
 
+> **Atenção:** a lista oficial de projetos agora é `data/projects.json`, mantida pelo **painel de vídeos**
+> (`npm run admin`, veja `admin/README.md`). As tabelas abaixo são o histórico da primeira carga e podem
+> estar desatualizadas. Não edite os painéis de `index.html`, `work.html` e `projeto.html` à mão.
+
 Os vídeos abaixo já foram processados a partir de `~/Desktop/lozy_creative/business/PORTFOLIO`
 (comprimidos em H.264 1080p ~5 Mbps + poster JPG) e colocados em `projects/`. Nomes de exibição,
 ordem e capas foram definidos pelo Leo e valem igual em Home, Work e na página de projeto

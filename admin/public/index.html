@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Painel de vídeos · Lozy Creative</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <h1>Painel de vídeos</h1>
+    <span>Lozy Creative · uso interno</span>
+  </div>
+  <div class="actions">
+    <a class="btn ghost" href="/preview/" target="_blank" rel="noopener">Ver site (prévia)</a>
+    <button type="button" class="btn" id="btnNew">+ Novo vídeo</button>
+    <button type="button" class="btn primary" id="btnReview">Revisar e publicar <span class="badge" id="pendingBadge" hidden></span></button>
+  </div>
+</header>
+
+<div id="notice" class="notice" hidden></div>
+
+<main>
+  <p class="hint">As mudanças ficam só neste computador até você clicar em <strong>Revisar e publicar</strong>. Use <strong>Ver site (prévia)</strong> para conferir como ficou.</p>
+
+  <nav class="tabs" role="tablist">
+    <button type="button" class="tab on" data-tab="work" role="tab">Work · todos os vídeos <span class="count" id="countWork"></span></button>
+    <button type="button" class="tab" data-tab="home" role="tab">Home · destaques <span class="count" id="countHome"></span></button>
+  </nav>
+
+  <section id="tabWork">
+    <div class="chips" id="chips" aria-label="Filtrar por nicho"></div>
+    <p class="small" id="orderNote"></p>
+    <ul class="list" id="listWork"></ul>
+  </section>
+
+  <section id="tabHome" hidden>
+    <p class="small">É o carrossel da página inicial. A ordem aqui é a ordem na home.</p>
+    <ul class="list" id="listHome"></ul>
+    <div class="addrow">
+      <select id="homeAdd" aria-label="Adicionar à home"></select>
+      <button type="button" class="btn" id="btnHomeAdd">Adicionar à home</button>
+    </div>
+  </section>
+
+  <p class="foot" id="foot"></p>
+</main>
+
+<!-- Novo / editar vídeo -->
+<dialog id="dlgProject">
+  <form method="dialog" id="formProject" novalidate>
+    <h2 id="dlgTitle">Novo vídeo</h2>
+
+    <fieldset class="block">
+      <legend>Vídeo</legend>
+      <div id="currentVideo" hidden>
+        <img id="currentPoster" alt="" width="90">
+        <span class="small" id="currentInfo"></span>
+      </div>
+      <label class="check"><input type="checkbox" id="optCompress" checked> Comprimir para a web (recomendado)</label>
+      <div class="dz" id="dz" tabindex="0">
+        <input type="file" id="fileInput" accept="video/*,.mkv,.mov,.mp4,.m4v,.webm,.avi" hidden>
+        <p id="dzText"><strong>Arraste o vídeo aqui</strong> ou clique para escolher</p>
+        <small>MP4, MOV, M4V, MKV, WEBM ou AVI · até 6 GB</small>
+      </div>
+      <div class="prog" id="prog" hidden>
+        <div class="bar"><i id="progBar"></i></div>
+        <span id="progText"></span>
+      </div>
+    </fieldset>
+
+    <fieldset class="block" id="posterBlock" hidden>
+      <legend>Capa</legend>
+      <div class="poster">
+        <img id="posterPreview" alt="Capa escolhida">
+        <div>
+          <p class="small">Arraste para escolher o quadro da capa.</p>
+          <input type="range" id="posterRange" min="0" max="1" step="0.1" value="1">
+          <span id="posterTime" class="small">0:01</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="grid">
+      <label>Cliente *
+        <input type="text" id="fClient" maxlength="120" placeholder="Ex.: Bella Guttmann & Nike">
+      </label>
+      <label>Título <small>(aparece ao lado do cliente no carrossel)</small>
+        <input type="text" id="fTitle" maxlength="160" placeholder="Ex.: Joga sinistro, Brasil!">
+      </label>
+      <label>Nicho * <small>(o seletor do Work)</small>
+        <select id="fNicho"></select>
+      </label>
+      <label>Categoria
+        <input type="text" id="fTag" maxlength="60" list="tagList" placeholder="Ex.: Esporte">
+        <datalist id="tagList"></datalist>
+      </label>
+      <label>Ano
+        <input type="text" id="fYear" maxlength="10" placeholder="2026">
+      </label>
+      <label>Entrega
+        <input type="text" id="fDelivery" maxlength="80" placeholder="Ex.: Reels 9:16">
+      </label>
+      <label class="wide">Descrição
+        <textarea id="fDesc" rows="3" maxlength="4000" placeholder="Contexto, desafio, o que a Lozy fez, resultado."></textarea>
+      </label>
+      <label class="wide" id="slugRow">Identificador <small>(vira o nome do arquivo e o link; não dá para mudar depois)</small>
+        <input type="text" id="fSlug" maxlength="60" placeholder="gerado a partir do cliente">
+      </label>
+      <label class="check wide"><input type="checkbox" id="fHome"> Mostrar na home (destaques)</label>
+    </div>
+
+    <p class="error" id="formError" hidden></p>
+    <div class="buttons">
+      <button type="button" class="btn ghost" id="btnCancel">Cancelar</button>
+      <button type="button" class="btn primary" id="btnSave" disabled>Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Remover -->
+<dialog id="dlgDelete">
+  <form method="dialog">
+    <h2>Remover vídeo?</h2>
+    <p id="delText"></p>
+    <label class="check"><input type="checkbox" id="delFiles" checked> Apagar também os arquivos de vídeo e capa deste computador</label>
+    <p class="small">O histórico do git guarda a versão anterior, então dá para recuperar se for preciso.</p>
+    <div class="buttons">
+      <button type="button" class="btn ghost" id="delCancel">Cancelar</button>
+      <button type="button" class="btn danger" id="delOk">Remover</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Revisar e publicar -->
+<dialog id="dlgReview">
+  <form method="dialog">
+    <h2>Revisar antes de publicar</h2>
+    <div id="reviewBody"></div>
+    <div id="publishBlock">
+      <label>Mensagem do registro <small>(opcional)</small>
+        <input type="text" id="pubMessage" maxlength="200">
+      </label>
+      <label class="check"><input type="checkbox" id="pubConfirm"> Revisei a prévia e quero publicar no site oficial</label>
+    </div>
+    <p class="error" id="pubError" hidden></p>
+    <div class="buttons">
+      <a class="btn ghost" href="/preview/" target="_blank" rel="noopener">Abrir prévia</a>
+      <button type="button" class="btn ghost" id="pubClose">Fechar</button>
+      <button type="button" class="btn primary" id="pubGo" disabled>Publicar no site</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

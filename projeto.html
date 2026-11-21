@@ -178,6 +178,7 @@ function showReview(n){
   document.querySelectorAll('.review-dot')[n-1].classList.add('active');
 }
 
+// projects:data:start (gerado por admin/build-site.js a partir de data/projects.json; não edite à mão)
 const PROJECTS = {
  "alan-baic-v1": {
   "client": "A BAIC chegou no Brasil",
@@ -186,47 +187,12 @@ const PROJECTS = {
   "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
   "meta": [["Cliente","A BAIC chegou no Brasil"],["Categoria","Automotivo"],["Ano","2025"],["Entrega","[Formato]"]]
  },
- "ritua-1a-edicao": {
-  "client": "Bem vindos ao Ritua Offline",
-  "tag": "Evento",
-  "title": "Bem vindos ao Ritua Offline",
-  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
-  "meta": [["Cliente","Bem vindos ao Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
- },
- "larissa-blefaroplastia": {
-  "client": "Dra. Larissa Prioli",
-  "tag": "Saúde",
-  "title": "Rejuvenescimento Saudável e Seguro",
-  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
-  "meta": [["Cliente","Dra. Larissa Prioli"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
- },
  "bella-nike-selecao": {
   "client": "Bella Guttmann & Nike",
   "tag": "Esporte",
   "title": "Joga sinistro, Brasil!",
   "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
   "meta": [["Cliente","Bella Guttmann & Nike"],["Categoria","Esporte"],["Ano","2025"],["Entrega","[Formato]"]]
- },
- "isabelli-profuse-2": {
-  "client": "Dra. Isabelli & Profuse",
-  "tag": "Saúde",
-  "title": "Dra. Isabelli & Profuse",
-  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
-  "meta": [["Cliente","Dra. Isabelli & Profuse"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
- },
- "joao-wellness-fitbr": {
-  "client": "João Druzian & Wellness na Fitness Brasil",
-  "tag": "Evento",
-  "title": "João Druzian & Wellness na Fitness Brasil",
-  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
-  "meta": [["Cliente","João Druzian & Wellness na Fitness Brasil"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
- },
- "you-chsa": {
-  "client": "You Club & Clube Hípico",
-  "tag": "Evento",
-  "title": "You Club & Clube Hípico",
-  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
-  "meta": [["Cliente","You Club & Clube Hípico"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
  },
  "joao-abarth": {
   "client": "João Druzian & Fiat Abarth",
@@ -256,12 +222,40 @@ const PROJECTS = {
   "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
   "meta": [["Cliente","Dot Energy no Rappi Turbo"],["Categoria","Fintech"],["Ano","2025"],["Entrega","[Formato]"]]
  },
+ "isabelli-profuse-2": {
+  "client": "Dra. Isabelli & Profuse",
+  "tag": "Saúde",
+  "title": "Dra. Isabelli & Profuse",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Isabelli & Profuse"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
  "dot-g4-ads": {
   "client": "Dot Energy no G4",
   "tag": "Fintech",
   "title": "Dot Energy no G4",
   "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
   "meta": [["Cliente","Dot Energy no G4"],["Categoria","Fintech"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "joao-wellness-fitbr": {
+  "client": "João Druzian & Wellness na Fitness Brasil",
+  "tag": "Evento",
+  "title": "João Druzian & Wellness na Fitness Brasil",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","João Druzian & Wellness na Fitness Brasil"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "you-chsa": {
+  "client": "You Club & Clube Hípico",
+  "tag": "Evento",
+  "title": "You Club & Clube Hípico",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","You Club & Clube Hípico"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "ritua-1a-edicao": {
+  "client": "Bem vindos ao Ritua Offline",
+  "tag": "Evento",
+  "title": "Bem vindos ao Ritua Offline",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Bem vindos ao Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
  },
  "ritua-outlive": {
   "client": "Outlive no Ritua Offline",
@@ -283,6 +277,13 @@ const PROJECTS = {
   "title": "Blessy no Ritua Offline",
   "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
   "meta": [["Cliente","Blessy no Ritua Offline"],["Categoria","Evento"],["Ano","2025"],["Entrega","[Formato]"]]
+ },
+ "larissa-blefaroplastia": {
+  "client": "Dra. Larissa Prioli",
+  "tag": "Saúde",
+  "title": "Rejuvenescimento Saudável e Seguro",
+  "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+  "meta": [["Cliente","Dra. Larissa Prioli"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
  },
  "larissa-mini-lipo": {
   "client": "Dra. Larissa Prioli",
@@ -327,6 +328,7 @@ const PROJECTS = {
   "meta": [["Cliente","Dr. Augusto"],["Categoria","Saúde"],["Ano","2025"],["Entrega","[Formato]"]]
  }
 };
+// projects:data:end
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const p = PROJECTS[id];

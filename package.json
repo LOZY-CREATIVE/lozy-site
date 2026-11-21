@@ -1,0 +1,13 @@
+{
+  "name": "lozy-site",
+  "private": true,
+  "description": "Site da Lozy Creative (estático) e painel interno de vídeos",
+  "scripts": {
+    "admin": "node admin/server.js",
+    "build": "node admin/build-site.js",
+    "check": "node admin/build-site.js --check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

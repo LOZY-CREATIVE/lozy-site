@@ -1,0 +1,258 @@
+{
+  "nichos": [
+    {
+      "id": "marcas",
+      "label": "Marcas & Publicidades"
+    },
+    {
+      "id": "eventos",
+      "label": "Eventos & Ativações"
+    },
+    {
+      "id": "medicos",
+      "label": "Médicos"
+    }
+  ],
+  "home": [
+    "alan-baic-v1",
+    "ritua-1a-edicao",
+    "larissa-blefaroplastia",
+    "bella-nike-selecao",
+    "isabelli-profuse-2",
+    "joao-wellness-fitbr",
+    "you-chsa"
+  ],
+  "projects": [
+    {
+      "id": "alan-baic-v1",
+      "client": "A BAIC chegou no Brasil",
+      "title": "",
+      "tag": "Automotivo",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "bella-nike-selecao",
+      "client": "Bella Guttmann & Nike",
+      "title": "Joga sinistro, Brasil!",
+      "tag": "Esporte",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "joao-abarth",
+      "client": "João Druzian & Fiat Abarth",
+      "title": "Ritmo",
+      "tag": "Automotivo",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "isabelli-profuse",
+      "client": "Dra. Isabelli & Profuse",
+      "title": "Skincare na correria",
+      "tag": "Saúde",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "pedro-fila",
+      "client": "Pedro Nogueira & Fila",
+      "title": "O último homem de pé",
+      "tag": "Esporte",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "dot-rappi",
+      "client": "Dot Energy no Rappi Turbo",
+      "title": "",
+      "tag": "Fintech",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "isabelli-profuse-2",
+      "client": "Dra. Isabelli & Profuse",
+      "title": "",
+      "tag": "Saúde",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "dot-g4-ads",
+      "client": "Dot Energy no G4",
+      "title": "",
+      "tag": "Fintech",
+      "nicho": "marcas",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "joao-wellness-fitbr",
+      "client": "João Druzian & Wellness na Fitness Brasil",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "you-chsa",
+      "client": "You Club & Clube Hípico",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "ritua-1a-edicao",
+      "client": "Bem vindos ao Ritua Offline",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788140103
+    },
+    {
+      "id": "ritua-outlive",
+      "client": "Outlive no Ritua Offline",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "ritua-2a-edicao",
+      "client": "Ritua Offline, mais uma vez!",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "ritua-blessy",
+      "client": "Blessy no Ritua Offline",
+      "title": "",
+      "tag": "Evento",
+      "nicho": "eventos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "larissa-blefaroplastia",
+      "client": "Dra. Larissa Prioli",
+      "title": "Rejuvenescimento Saudável e Seguro",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383053
+    },
+    {
+      "id": "larissa-mini-lipo",
+      "client": "Dra. Larissa Prioli",
+      "title": "Tratamento para Celulite",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "rafael-ultramar-brunella",
+      "client": "Dra. Brunella na Clínica Ultramar",
+      "title": "",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "augusto-cirurgia",
+      "client": "Dr. Augusto",
+      "title": "Recomeços",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "joao-malta-nutri",
+      "client": "Dr. João Malta",
+      "title": "Nutrição sem complicação",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "augusto-extrator-ads",
+      "client": "Dr. Augusto",
+      "title": "Cirurgia Capilar de excelência",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    },
+    {
+      "id": "augusto-mounjaro-ads",
+      "client": "Dr. Augusto",
+      "title": "A verdade sobre queda de cabelo",
+      "tag": "Saúde",
+      "nicho": "medicos",
+      "year": "2025",
+      "delivery": "[Formato]",
+      "desc": "[Descrição do projeto — placeholder. Contexto, desafio, o que a Lozy fez, resultado.]",
+      "posterV": 1788383054
+    }
+  ]
+}

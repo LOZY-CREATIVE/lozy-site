@@ -149,8 +149,11 @@ Template único. Lê `?id=` da URL e popula a partir do objeto `PROJECTS` no top
 Os vídeos **não usam mais o Vimeo**: são arquivos `.mp4` (H.264 ~5 Mbps) + poster `.jpg` versionados no próprio repo, em `assets/videos/` (hero em `assets/videos/hero.mp4`, projetos em `assets/videos/projects/{slug}.mp4`).
 
 - Cada projeto é identificado por um **slug** (ex.: `alan-baic-v1`), usado no nome dos arquivos e em `projeto.html?id={slug}`.
-- A lista de slugs, nomes de exibição, ordem e timestamps das capas está em `assets/videos/README.md`.
-- Para adicionar/trocar um vídeo: comprimir, gerar o poster, colocar em `assets/videos/projects/` e registrar o slug no bloco `.w-card`/`.showcase-panel` correspondente e no objeto `PROJECTS` do `projeto.html`.
+- **A lista de projetos é `data/projects.json`** (cliente, título, categoria, nicho do Work, ano, entrega, descrição, ordem do Work e ordem da home). Quem mantém essa lista é o **painel de vídeos** (`npm run admin`; guia em `admin/README.md`).
+- Para adicionar/trocar/reordenar/remover vídeos **use o painel**. Ele comprime o vídeo, extrai a capa, atualiza `data/projects.json`, regera as partes das páginas e, depois de uma revisão, publica.
+- `admin/build-site.js` (`npm run build`) gera os painéis do carrossel em `index.html` e `work.html`, os botões de nicho e o objeto `PROJECTS` de `projeto.html`, **apenas entre os marcadores** `projects:...:start/end`. Não edite à mão o que está entre eles.
+- Limites: o GitHub recusa arquivos acima de **100 MB**, e o Pages recomenda sites de até **~1 GB** (os vídeos já somam ~680 MB). Quando chegar perto, mover os vídeos para armazenamento externo.
+- `assets/videos/README.md` guarda o histórico da primeira carga (pode estar desatualizado).
 
 ---
 
