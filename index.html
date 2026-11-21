@@ -384,14 +384,36 @@ function showReview(n){
 }
 </script>
 <script>
-/* O que fazemos: no celular, a seção fixa na tela e o cartão troca conforme a rolagem */
+/* O que fazemos: no celular, a seção fixa na tela e o cartão troca conforme a rolagem.
+   O cartão exibido anda no máximo um passo por vez (STEP ms), mesmo que a rolagem
+   passe por vários de uma vez (inércia do dedo): assim a pilha se forma cartão a cartão. */
 (function(){
   var sec=document.getElementById('atos');if(!sec)return;
   var pin=sec.querySelector('.m-pin'),sticky=sec.querySelector('.m-sticky');
   var cards=[].slice.call(sec.querySelectorAll('.m-card')),dots=[].slice.call(sec.querySelectorAll('.m-dots i'));
   var mq=matchMedia('(max-width:768px)'),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var raf=0,last=-1,wasActive=false;
-  function clear(){cards.forEach(function(c){c.classList.remove('on','past');c.style.removeProperty('--d')});dots.forEach(function(d){d.classList.remove('on')});last=-1}
+  var STEP=480,BAND=.05;
+  var raf=0,cur=-1,target=0,timer=0,wasActive=false;
+  function render(k){
+    cards.forEach(function(c,i){
+      c.classList.toggle('on',i===k);
+      c.classList.toggle('past',i<k);
+      if(i<k)c.style.setProperty('--d',k-i);else c.style.removeProperty('--d');
+    });
+    dots.forEach(function(d,i){d.classList.toggle('on',i===k)});
+  }
+  function clear(){
+    clearTimeout(timer);timer=0;cur=-1;
+    cards.forEach(function(c){c.classList.remove('on','past');c.style.removeProperty('--d')});
+    dots.forEach(function(d){d.classList.remove('on')});
+  }
+  function walk(){
+    timer=0;
+    if(cur===target)return;
+    cur+=target>cur?1:-1;
+    render(cur);
+    if(cur!==target)timer=setTimeout(walk,STEP);
+  }
   function update(){
     raf=0;
     var active=mq.matches&&!reduce;
@@ -400,17 +422,15 @@ function showReview(n){
     wasActive=true;
     var total=pin.offsetHeight-sticky.offsetHeight;
     var p=Math.max(0,Math.min(.9999,-pin.getBoundingClientRect().top/total));
-    var k=Math.floor(p*cards.length);
-    if(k===last)return;last=k;
-    cards.forEach(function(c,i){
-      c.classList.toggle('on',i===k);
-      c.classList.toggle('past',i<k);
-      if(i<k)c.style.setProperty('--d',k-i);else c.style.removeProperty('--d');
-    });
-    dots.forEach(function(d,i){d.classList.toggle('on',i===k)});
+    var raw=p*cards.length;
+    // folga: perto da divisa entre dois cartões, mantém o atual (evita ir e voltar)
+    if(cur===-1||raw<target-BAND||raw>=target+1+BAND)target=Math.floor(raw);
+    if(cur===-1){cur=target;render(cur);return}
+    if(cur!==target&&!timer)walk();
   }
   function req(){if(!raf)raf=requestAnimationFrame(update)}
-  addEventListener('scroll',req,{passive:true});addEventListener('resize',function(){last=-1;req()});
+  addEventListener('scroll',req,{passive:true});
+  addEventListener('resize',req); // a barra do navegador dispara resize ao rolar: só recalcula, não zera o estado
   update();
 })();
 </script>

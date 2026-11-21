@@ -195,7 +195,7 @@ nav.scrolled .nav-burger span{background:var(--petroleo)}
 @media(hover:none){.m-card:hover{transform:none}}
 /* M2 no celular: a seção fixa na tela e o cartão troca conforme a rolagem (a classe .m-scroll é ligada pelo JS) */
 .m-dots{display:none}
-.m-scroll .m-pin{height:calc(100vh + 4 * 62vh);height:calc(100svh + 4 * 62svh)}
+.m-scroll .m-pin{height:calc(100vh + 4 * 90vh);height:calc(100svh + 4 * 90svh)}
 .m-scroll .m-sticky{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;padding:4.2rem 0 .8rem}
 .m-scroll .m-stage{width:100%;padding:2rem .9rem 1.2rem}
 .m-scroll .m-stage .servicos-head{margin-bottom:2.6rem;padding:0 .4rem}

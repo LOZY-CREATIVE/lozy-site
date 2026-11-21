@@ -214,12 +214,6 @@
     <span>São Paulo, Brasil</span>
   </div>
 </footer>
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()">Fechar ✕</button>
-    <div class="modal-iframe-wrap"><video id="modal-video" src="" controls playsinline></video></div>
-  </div>
-</div>
 <script>
 window.addEventListener('load',()=>{
   const pre=document.getElementById('preloader');
@@ -262,22 +256,6 @@ function showReview(n){
   document.getElementById('review-'+n).classList.add('active');
   document.querySelectorAll('.review-dot')[n-1].classList.add('active');
 }
-function openModal(id){
-  const v=document.getElementById('modal-video');
-  v.src='assets/videos/projects/'+id+'.mp4';
-  v.play().catch(()=>{});
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(e){
-  if(e&&e.target!==e.currentTarget)return;
-  const v=document.getElementById('modal-video');
-  v.pause();
-  v.src='';
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 -->
 <script>document.querySelectorAll('.ano').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
