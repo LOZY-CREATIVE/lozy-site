@@ -154,7 +154,8 @@ Os vídeos **não usam mais o Vimeo**: são arquivos `.mp4` (H.264 ~5 Mbps) + po
 
 - Cada projeto é identificado por um **slug** (ex.: `alan-baic-v1`), usado no nome dos arquivos e em `projeto.html?id={slug}`.
 - **A lista de projetos é `data/projects.json`** (cliente, título, categoria, nicho do Work, ano, entrega, descrição, ordem do Work e ordem da home). Quem mantém essa lista é o **painel de vídeos** (`npm run admin`; guia em `admin/README.md`).
-- Para adicionar/trocar/reordenar/remover vídeos **use o painel**. Ele comprime o vídeo, extrai a capa, atualiza `data/projects.json`, regera as partes das páginas e, depois de uma revisão, publica.
+- Projetos com `"hidden": true` em `data/projects.json` (botão **Ocultar** do painel) ficam guardados mas **não são gerados** na home, no Work nem em `projeto.html` (o link mostra "Projeto não encontrado"); ao mostrar de novo voltam à mesma posição. Oculto **não é privado**: o arquivo continua acessível pelo endereço.
+- Para adicionar/trocar/reordenar/ocultar/remover vídeos **use o painel**. Ele comprime o vídeo, extrai a capa, atualiza `data/projects.json`, regera as partes das páginas e, depois de uma revisão, publica.
 - `admin/build-site.js` (`npm run build`) gera os painéis do carrossel em `index.html` e `work.html`, os botões de nicho e o objeto `PROJECTS` de `projeto.html`, **apenas entre os marcadores** `projects:...:start/end`. Não edite à mão o que está entre eles.
 - Limites: o GitHub recusa arquivos acima de **100 MB**, e o Pages recomenda sites de até **~1 GB** (os vídeos já somam ~680 MB). Quando chegar perto, mover os vídeos para armazenamento externo.
 - `assets/videos/README.md` guarda o histórico da primeira carga (pode estar desatualizado).

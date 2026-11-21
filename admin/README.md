@@ -29,7 +29,9 @@ Precisa de **Node**, **ffmpeg** e **git** instalados (`brew install ffmpeg` se f
 
 **Ordem**: na aba **Work**, arraste pela alça (⠿) ou use as setas. A ordem é a do carrossel do Work (e do "Todos"). Com um nicho filtrado a ordem fica travada. Na aba **Home**, a ordem é a da página inicial.
 
-**Remover**: botão **Remover** (pergunta se apaga os arquivos também).
+**Ocultar / Mostrar**: o botão **Ocultar** tira o vídeo do site (Home, Work e a página própria, que passa a mostrar "Projeto não encontrado") **sem apagar nada**. O cadastro, o vídeo e a capa continuam guardados, e ao clicar em **Mostrar** ele volta exatamente no mesmo lugar da ordem. Na lista, o vídeo oculto aparece esmaecido com o selo "Oculto". Se todos os vídeos de um nicho ficarem ocultos, o botão desse nicho some do seletor do Work. **Atenção:** oculto não é privado. O arquivo continua dentro do site, e quem souber o endereço dele (`assets/videos/projects/...`) consegue abri-lo.
+
+**Remover**: botão **Remover** (pergunta se apaga os arquivos também). Use quando não quiser mais o vídeo; para tirar só por um tempo, prefira **Ocultar**.
 
 ## Publicar (com revisão)
 
@@ -47,7 +49,7 @@ O painel só publica a partir da branch `main` e só inclui: `data/`, `index.htm
 
 ## Como funciona por baixo
 
-- Tudo vem de **`data/projects.json`**: lista de projetos (cliente, título, categoria, nicho, ano, entrega, descrição), a ordem do Work e a ordem da home.
+- Tudo vem de **`data/projects.json`**: lista de projetos (cliente, título, categoria, nicho, ano, entrega, descrição, e `"hidden": true` nos ocultos), a ordem do Work e a ordem da home.
 - `admin/build-site.js` gera, a partir dessa lista, as partes das páginas entre os marcadores `projects:...:start` e `projects:...:end` em `index.html`, `work.html` e `projeto.html`. **Não edite à mão o que está entre os marcadores**: a próxima geração sobrescreve.
 - Para regerar sem o painel: `npm run build`. Para só conferir se as páginas estão em dia: `npm run check`.
 - Vídeos e capas ficam em `assets/videos/projects/<identificador>.mp4` e `<identificador>-poster.jpg`.

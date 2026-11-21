@@ -228,6 +228,7 @@ function projectFromBody(b, nichos, prev) {
     desc: cleanLong(b.desc, 4000),
     posterV: prev ? prev.posterV : null
   };
+  if (prev && prev.hidden) p.hidden = true; // editar não muda a visibilidade (isso é feito por /hidden)
   if (!p.client) throw new HttpError(400, 'Preencha o nome do cliente.');
   if (!nichos.some(n => n.id === p.nicho)) throw new HttpError(400, 'Escolha um nicho.');
   return p;
@@ -302,6 +303,17 @@ async function updateProject(id, b) {
   });
 }
 
+/* Ocultar: tira do site (home, Work e página própria) sem apagar nada. Mostrar: volta no mesmo lugar. */
+async function setHidden(id, hidden) {
+  return withLock(async () => {
+    const data = readData();
+    const p = data.projects.find(x => x.id === id);
+    if (!p) throw new HttpError(404, 'Projeto não encontrado.');
+    if (hidden) p.hidden = true; else delete p.hidden;
+    return { project: p, build: writeData(data) };
+  });
+}
+
 async function deleteProject(id, removeFiles) {
   return withLock(async () => {
     const data = readData();
@@ -337,12 +349,13 @@ async function saveOrder(b) {
 
 /* ───────────────────────── revisão e publicação ───────────────────────── */
 function summarize(oldData, newData) {
-  const out = { added: [], removed: [], changed: [], reordered: false, homeChanged: false };
+  const out = { added: [], removed: [], changed: [], hidden: [], shown: [], reordered: false, homeChanged: false };
   const o = new Map((oldData.projects || []).map(p => [p.id, p]));
   const n = new Map(newData.projects.map(p => [p.id, p]));
   newData.projects.forEach(p => {
-    if (!o.has(p.id)) { out.added.push(p.client + (p.title ? ' — ' + p.title : '')); return; }
+    if (!o.has(p.id)) { out.added.push(p.client + (p.title ? ' — ' + p.title : '') + (p.hidden ? ' (oculto)' : '')); return; }
     const q = o.get(p.id);
+    if (!!q.hidden !== !!p.hidden) (p.hidden ? out.hidden : out.shown).push(p.client);
     const diff = ['client', 'title', 'tag', 'nicho', 'year', 'delivery', 'desc', 'posterV'].filter(k => String(q[k] || '') !== String(p[k] || ''));
     if (diff.length) out.changed.push({ name: p.client, fields: diff.map(k => ({ client: 'cliente', title: 'título', tag: 'categoria', nicho: 'nicho', year: 'ano', delivery: 'entrega', desc: 'descrição', posterV: 'capa/vídeo' }[k])) });
   });
@@ -384,6 +397,8 @@ function autoMessage(s) {
   if (s.added.length) parts.push('add ' + s.added.slice(0, 3).join(', ') + (s.added.length > 3 ? ` +${s.added.length - 3}` : ''));
   if (s.changed.length) parts.push('update ' + s.changed.slice(0, 3).map(c => c.name).join(', ') + (s.changed.length > 3 ? ` +${s.changed.length - 3}` : ''));
   if (s.removed.length) parts.push('remove ' + s.removed.slice(0, 3).join(', '));
+  if (s.hidden.length) parts.push('hide ' + s.hidden.slice(0, 3).join(', ') + (s.hidden.length > 3 ? ` +${s.hidden.length - 3}` : ''));
+  if (s.shown.length) parts.push('show ' + s.shown.slice(0, 3).join(', ') + (s.shown.length > 3 ? ` +${s.shown.length - 3}` : ''));
   if (s.reordered) parts.push('reorder');
   if (s.homeChanged && !s.added.length) parts.push('home');
   return 'Videos: ' + (parts.join('; ') || 'update');
@@ -476,6 +491,10 @@ async function api(req, res, url) {
     return json(res, 200, { info, sizeMB: mb(fileSize(file)) });
   }
   if (m === 'POST' && p === '/api/projects') return json(res, 200, await createProject(await readJson(req)));
+  if (m === 'PUT' && (mm = p.match(/^\/api\/projects\/([a-z0-9-]+)\/hidden$/))) {
+    const b = await readJson(req);
+    return json(res, 200, await setHidden(mm[1], b.hidden === true));
+  }
   if ((mm = p.match(/^\/api\/projects\/([a-z0-9-]+)$/))) {
     if (m === 'PUT') return json(res, 200, await updateProject(mm[1], await readJson(req)));
     if (m === 'DELETE') return json(res, 200, await deleteProject(mm[1], url.searchParams.get('files') !== '0'));

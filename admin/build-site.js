@@ -75,24 +75,29 @@ function panel(p, kind, first) {
     </div>`;
 }
 
+/* Projetos ocultos ("hidden": true) continuam guardados, mas não aparecem no site:
+   nem na home, nem no Work, nem têm página própria (o link mostra "Projeto não encontrado"). */
+const visibleOf = data => data.projects.filter(p => !p.hidden);
+
 function homeHtml(data) {
-  const byId = new Map(data.projects.map(p => [p.id, p]));
-  return data.home.map((id, i) => panel(byId.get(id), 'home', i === 0)).join('\n');
+  const byId = new Map(visibleOf(data).map(p => [p.id, p]));
+  return data.home.filter(id => byId.has(id)).map((id, i) => panel(byId.get(id), 'home', i === 0)).join('\n');
 }
 
 function workHtml(data) {
-  return data.projects.map(p => panel(p, 'work', false)).join('\n');
+  return visibleOf(data).map(p => panel(p, 'work', false)).join('\n');
 }
 
 function filtersHtml(data) {
   const btn = (key, label, active) =>
     `    <button type="button" class="wf-btn${active ? ' is-active' : ''}" role="tab" aria-selected="${active ? 'true' : 'false'}" data-filter="${esc(key)}">${esc(label)}</button>`;
-  return [btn('all', 'Todos', true)].concat(data.nichos.map(n => btn(n.id, n.label, false))).join('\n');
+  const used = new Set(visibleOf(data).map(p => p.nicho)); // nicho sem nenhum vídeo visível não aparece no seletor
+  return [btn('all', 'Todos', true)].concat(data.nichos.filter(n => used.has(n.id)).map(n => btn(n.id, n.label, false))).join('\n');
 }
 
 function projectsJs(data) {
   const safe = s => JSON.stringify(s == null ? '' : s).replace(/<\//g, '<\\/');
-  const items = data.projects.map(p => {
+  const items = visibleOf(data).map(p => {
     const title = p.title && p.title.trim() ? p.title : p.client;
     return ` ${safe(p.id)}: {
   "client": ${safe(p.client)},

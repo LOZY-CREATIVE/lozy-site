@@ -50,7 +50,11 @@
     if (S.tools.ffmpeg === false || S.tools.ffprobe === false) notes.push('O ffmpeg não foi encontrado neste computador. Sem ele não dá para comprimir vídeos nem escolher capas. Instale com: brew install ffmpeg');
     if (S.tools.git === false) notes.push('O git não foi encontrado: não será possível publicar.');
     showNotice(notes.join(' '));
-    $('#countWork').textContent = d.projects.length; $('#countHome').textContent = d.home.length;
+    var nHidden = d.projects.filter(function (p) { return p.hidden; }).length;
+    var hiddenIds = {}; d.projects.forEach(function (p) { if (p.hidden) hiddenIds[p.id] = 1; });
+    var homeHidden = d.home.filter(function (id) { return hiddenIds[id]; }).length;
+    $('#countWork').textContent = d.projects.length + (nHidden ? ' (' + nHidden + ' oculto' + (nHidden > 1 ? 's' : '') + ')' : '');
+    $('#countHome').textContent = d.home.length + (homeHidden ? ' (' + homeHidden + ' oculto' + (homeHidden > 1 ? 's' : '') + ')' : '');
 
     var chips = $('#chips'); chips.textContent = '';
     [{ id: 'all', label: 'Todos' }].concat(d.nichos).forEach(function (n) {
@@ -72,7 +76,7 @@
     var sel = $('#homeAdd'); sel.textContent = '';
     var notIn = d.projects.filter(function (p) { return d.home.indexOf(p.id) < 0; });
     sel.appendChild(el('option', { value: '', text: notIn.length ? 'Escolha um vídeo…' : 'Todos já estão na home' }));
-    notIn.forEach(function (p) { sel.appendChild(el('option', { value: p.id, text: p.client + (p.title ? ' — ' + p.title : '') })); });
+    notIn.forEach(function (p) { sel.appendChild(el('option', { value: p.id, text: p.client + (p.title ? ' — ' + p.title : '') + (p.hidden ? ' (oculto)' : '') })); });
     $('#btnHomeAdd').disabled = !notIn.length;
 
     var tags = {}; d.projects.forEach(function (p) { if (p.tag) tags[p.tag] = 1; });
@@ -84,23 +88,34 @@
 
   function row(p, o) {
     var inHome = S.data.home.indexOf(p.id) >= 0;
-    var li = el('li', { class: 'row' + (o.reorder ? '' : ' locked'), 'data-id': p.id, draggable: o.reorder ? 'true' : false },
+    var li = el('li', { class: 'row' + (o.reorder ? '' : ' locked') + (p.hidden ? ' is-hidden' : ''), 'data-id': p.id, draggable: o.reorder ? 'true' : false },
       el('span', { class: 'handle', title: 'Arraste para reordenar', text: '⠿' }),
       el('img', { class: 'thumb', src: posterSrc(p), alt: '', loading: 'lazy' }),
       el('div', { class: 'info' },
         el('strong', { text: p.client }, p.title ? '' : null),
         el('span', { class: 'meta', text: [p.title, nichoLabel(p.nicho), p.tag, p.year].filter(Boolean).join(' · ') }),
-        (o.home && inHome) ? el('span', { class: 'tag', text: 'Home' }) : null
+        (o.home && inHome && !p.hidden) ? el('span', { class: 'tag', text: 'Home' }) : null,
+        p.hidden ? el('span', { class: 'tag off', text: 'Oculto', title: 'Não aparece no site' }) : null
       ),
       el('div', { class: 'rowact' },
         o.reorder ? el('button', { type: 'button', class: 'mini', title: 'Subir', text: '↑', disabled: o.first, onclick: function () { move(p.id, -1, o.home ? 'projects' : 'home'); } }) : null,
         o.reorder ? el('button', { type: 'button', class: 'mini', title: 'Descer', text: '↓', disabled: o.last, onclick: function () { move(p.id, 1, o.home ? 'projects' : 'home'); } }) : null,
         o.removeHome ? el('button', { type: 'button', class: 'mini', text: 'Tirar da home', onclick: function () { saveOrder({ home: S.data.home.filter(function (x) { return x !== p.id; }) }); } }) : null,
-        el('a', { class: 'mini', href: '/preview/projeto.html?id=' + p.id, target: '_blank', rel: 'noopener', text: 'Ver', style: 'text-decoration:none' }),
+        p.hidden ? null : el('a', { class: 'mini', href: '/preview/projeto.html?id=' + p.id, target: '_blank', rel: 'noopener', text: 'Ver', style: 'text-decoration:none' }),
+        o.home ? el('button', { type: 'button', class: 'mini', title: p.hidden ? 'Voltar a aparecer no site' : 'Tirar do site sem apagar', text: p.hidden ? 'Mostrar' : 'Ocultar', onclick: function () { toggleHidden(p); } }) : null,
         el('button', { type: 'button', class: 'mini', text: 'Editar', onclick: function () { openEdit(p.id); } }),
         o.home ? el('button', { type: 'button', class: 'mini del', text: 'Remover', onclick: function () { openDelete(p.id); } }) : null
       ));
     return li;
+  }
+
+  /* ───────── ocultar / mostrar ───────── */
+  function toggleHidden(p) {
+    var hide = !p.hidden;
+    api('PUT', '/api/projects/' + p.id + '/hidden', { hidden: hide }).then(function () {
+      toast(hide ? '“' + p.client + '” ocultado. Falta revisar e publicar.' : '“' + p.client + '” volta a aparecer. Falta revisar e publicar.');
+      return load();
+    }).catch(function (e) { toast(e.message, true); });
   }
 
   /* ───────── ordem ───────── */
@@ -327,6 +342,8 @@
         if (s.added.length) body.appendChild(section('Novos vídeos', s.added));
         if (s.changed.length) body.appendChild(section('Alterados', s.changed.map(function (c) { return c.name + ' (' + c.fields.join(', ') + ')'; })));
         if (s.removed.length) body.appendChild(section('Removidos', s.removed));
+        if (s.hidden && s.hidden.length) body.appendChild(section('Ocultados (saem do site, ficam guardados)', s.hidden));
+        if (s.shown && s.shown.length) body.appendChild(section('Voltam a aparecer no site', s.shown));
         if (s.reordered) body.appendChild(section('Ordem', ['A ordem do Work foi alterada.']));
         if (s.homeChanged) body.appendChild(section('Home', ['Os destaques da home foram alterados.']));
         var t = el('table');
